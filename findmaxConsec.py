@@ -30,3 +30,7 @@ if __name__ == "__main__":
 
 	findmaxConsec(['m','m','m','n','m','n','n']) == 'm', "Error!"
 	findmaxConsec(['s','t','s','t','s']) == 's', "Error!"
+	findmaxConsec([]) == "", "Error!"
+	findmaxConsec(None) == "", "Error!"
+
+	print("Success! Passed all tests")
