@@ -19,3 +19,11 @@ if __name__ == "__main__":
 	print(dequeue(list))
 
 	assert dequeue([]) == [], "Error!"
+
+	# Taking in user's input
+	print("what number do you want to enqueue? : ")
+	your_choice = input()
+	enqueue(list, int(your_choice))
+
+	# List with user's input enqueued.
+	print(list)
