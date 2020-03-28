@@ -1,5 +1,5 @@
-dict = {1,2,3} #methods: add(), remove(), discard(), update(), 
-list = [1,2,3] #methods: append(), insert(), remove(), discard()
+dict = {1:1,2:2,3:3} #methods: add(), remove(), discard(), update(), pop(), clear()
+list = [1,2,3] #methods: append(), insert(), remove(), discard(), pop()
 tuple = (1,2,3)
 
 
