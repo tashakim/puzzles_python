@@ -2,5 +2,5 @@
 import time;
 
 tick = time.time()
-print("Number of ticks : ", tick)
+print("Number of ticks : ", tick, "\n")
 print(time.localtime())
