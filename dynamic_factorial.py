@@ -14,6 +14,8 @@ def test():
 	assert dynamic_factorial(3) == 6, "Test failed"
 	assert dynamic_factorial(0) == 1, "Test failed"
 	assert dynamic_factorial(1) == 1, "Test failed"
+	print("Success!")
 
 if __name__ == "__main__":
 	print(dynamic_factorial(2))
+	test()
