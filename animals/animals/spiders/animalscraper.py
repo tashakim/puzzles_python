@@ -2,7 +2,9 @@ import scrapy
 
 class Spider(scrapy.Spider):
 	name = "animal_spider"
-	url = ["https://www.reddit.com/r/animal/"]
+	url = ["https://www.reddit.com/r/animal/",
+	"https://www.reddit.com/r/dogs/",
+	"https://www.reddit.com/r/cats/"]
 
 	def parse(self, response):
 		links = response.xpath("//img/@src")
