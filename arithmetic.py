@@ -4,9 +4,17 @@ class Arithmetic:
 		self.param2 = b
 
 	def add(self):
-		print(self.param1 + self.param2)
+		print(self.param1 + self.param2, "\n")
+
+	def subtract(self):
+		print(self.param1 - self.param2, "\n")
+
+	def multiply(self):
+		print(self.param1 * self.param2)
 	
 
 if __name__ == "__main__":
 	arithmetic = Arithmetic(1,2)
 	arithmetic.add()
+	arithmetic.subtract()
+	arithmetic.multiply()
