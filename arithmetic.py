@@ -4,10 +4,10 @@ class Arithmetic:
 		self.param2 = b
 
 	def add(self):
-		print(self.param1 + self.param2, "\n")
+		print(self.param1 + self.param2)
 
 	def subtract(self):
-		print(self.param1 - self.param2, "\n")
+		print(self.param1 - self.param2)
 
 	def multiply(self):
 		print(self.param1 * self.param2)
