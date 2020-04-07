@@ -34,6 +34,10 @@ class Guesser:
 				break
 		print(f"Correct! you have guessed it in {self.guesses} tries.")
 
+
 if __name__ == "__main__":
 	newgame = Guesser(10)
 	newgame.play()
+
+	newgame2 = Guesser(5)
+	newgame2.play()
