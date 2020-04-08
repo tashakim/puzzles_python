@@ -26,6 +26,13 @@ class Graph:
 			if visited[i] == False:
 				self.topologicalSortUtil(i, visited, stack)
 
-		print stack
+		print(stack)
 
-		
+if __name__ == "__main__":
+	mygraph = Graph(5)
+	mygraph.addEdge(5,2)
+	mygraph.addEdge(5,0)
+	mygraph.addEdge(2,3)
+	mygraph.addEdge(4,0)
+	mygraph.addEdge(4,1)
+	mygraph.addEdge(3,1)
