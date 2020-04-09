@@ -44,6 +44,30 @@ def test1():
 
     assert ret == 1
 
+def test1_1():
+    g = MyGraph()
+    v0 = GraphVertex("v0")
+    v1 = GraphVertex("v1")
+    v2 = GraphVertex("v2")
+    v3 = GraphVertex("v3")
+
+    g.insertVertex(v0)
+    g.insertVertex(v1)
+    g.insertVertex(v2)
+    g.insertVertex(v3)
+
+    e0 = GraphEdge("e0", 1)
+    e1 = GraphEdge("e1", 1)
+    e2 = GraphEdge("e2", 1)
+    e3 = GraphEdge("e3", 1)
+
+    g.insertEdge(v0, v3, e0)
+    g.insertEdge(v0, v1, e1)
+    g.insertEdge(v1, v2, e2)
+    g.insertEdge(v3, v2, e3)
+    ret = numShortestPaths(g, v0, v2)
+
+    assert ret == 2
 
 def test2():
     g = MyGraph()
@@ -97,6 +121,11 @@ def test2():
 
     assert ret == 2
 
+def singleVertexTest():
+    g = MyGraph()
+    a = GraphVertex("a")
+    g.insertVertex(a)
+    assert numShortestPaths(g, a,a) == 1, "Error"
 
 def get_tests():
     # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -111,7 +140,7 @@ def get_tests():
     # We will not be able to properly grade your coal tests if you do not follow
     # these instructions! You will lose points on your submission for failing
     # to follow these instructions.
-    return [sample_test, test1, test2]
+    return [sample_test, test1, test1_1, test2]
 
 # DO NOT EDIT BELOW THIS LINE ==================================================
 

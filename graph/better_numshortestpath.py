@@ -22,7 +22,7 @@ def numShortestPaths(g, start, end):
 
     vertices = []
     count = 1
-    start.distance = 0
+    start._distance = 0
     vertices.append(start)
     #print("size of vertices is: ", len(vertices))
     shortestDist = float('inf')
@@ -33,15 +33,11 @@ def numShortestPaths(g, start, end):
     			if g.incidentEdges(item) != None:
 	    			for edge in g.incidentEdges(item):
 	    				node = g.opposite(item, edge)
-	    				vertices.append(node)
-	    				node.distance = item.distance + 1
-
+                        vertices.append(node)
+                        if(item._distance+1 < shortestDist):
+                            shortestDist = item._distance +1
+                            count = 1
+                        elif(item._distance +1 == shortestDist):
+                            count +=1
 	    				g.removeEdge(edge)
-	    	else:			
-	    				if(item.distance < shortestDist):
-	    					shortestDist = item.distance
-	    					count =1
-	    				elif(item.distance == shortestDist):
-	    					count +=1
-	    				
     return count
