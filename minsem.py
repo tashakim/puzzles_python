@@ -18,4 +18,5 @@ def minSem(g):
 			if i._indegree == 0:
 				Queue.append(i)
 		minimum = max(semesters)
+		
 	return minimum
