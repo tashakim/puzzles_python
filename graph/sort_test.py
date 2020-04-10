@@ -60,7 +60,7 @@ def get_tests():
     # We will not be able to properly grade your coal tests if you do not follow
     # these instructions! You will lose points on your submission for failing
     # to follow these instructions.
-    return [example_test_1, simple_test, invalidInputTest]
+    return [example_test_1, simple_test, invalidInputTest, emptyListTest, singleElementTest]
 
 # DO NOT EDIT BELOW THIS LINE ==================================================
 

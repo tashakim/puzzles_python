@@ -41,6 +41,6 @@ def numShortestPaths(g, start, end):
                 adjacent.paths = visited.paths
             elif(adjacent.distance == visited.distance +1):
                 adjacent.paths += visited.paths
-            return 1
+
         if(visited == end):
-            return end.paths
+            return visited.paths

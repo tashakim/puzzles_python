@@ -140,7 +140,7 @@ def get_tests():
     # We will not be able to properly grade your coal tests if you do not follow
     # these instructions! You will lose points on your submission for failing
     # to follow these instructions.
-    return [sample_test, test1, test1_1, test2]
+    return [sample_test, test1, test1_1, test2, singleVertexTest]
 
 # DO NOT EDIT BELOW THIS LINE ==================================================
 

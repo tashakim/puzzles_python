@@ -43,6 +43,8 @@ def merge_sort(array):
             j += 1
             k += 1
         return array
+    else:
+        return array
 
 
 def quick_sort(array):
@@ -89,6 +91,8 @@ def radix_sort(array):
         Throws: InvalidInputException if list is None
     """
     checkValidInput(array)
+    if len(array)<=1:
+        return array
 
     max_element = max(array)
     digit = 1
