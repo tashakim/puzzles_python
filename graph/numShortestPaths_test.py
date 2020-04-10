@@ -1,5 +1,6 @@
 #/usr/bin/python3
 
+
 # DO NOT DELETE THESE STATEMENTS
 import numShortestPaths
 from importlib import reload
@@ -7,6 +8,7 @@ reload(numShortestPaths)
 from numShortestPaths import *
 from mygraph import *
 import pytest
+
 
 # Write your testing functions here! Each testing function should have an
 # informative name and test a specific aspect of your program's functionality.
@@ -19,11 +21,18 @@ import pytest
 
 # Here are some example test functions.
 
+
 def sample_test():
+    """This method is a sample test that checks correct 
+    outputs are given using this program.
+    """
     assert True != False, 'Error: True is equal to False'
 
-def test1():
 
+def test1():
+    """This method is an example test that checks outputs of 
+    numShortestPaths.py for a graph with three vertices.
+    """
     g = MyGraph()
     v0 = GraphVertex("v0")
     v1 = GraphVertex("v1")
@@ -41,10 +50,32 @@ def test1():
     g.insertEdge(v1, v2, e2)
 
     ret = numShortestPaths(g, v0, v2)
-
     assert ret == 1
 
-def test1_1():
+
+def singlePathTest():
+    """This method checks that the algorithm returns the 
+    correct number of shortest path, which is 1, for a 
+    graph with only two nodes, start and end.
+    """
+    g = MyGraph()
+    v0 = GraphVertex("start")
+    v1 = GraphVertex("end")
+
+    g.insertVertex(v0)
+    g.insertVertex(v1)
+    
+    e0 = GraphEdge("single_edge", 1)
+    g.insertEdge(v0, v1, e0)
+
+    assert numShortestPaths(g, v0, v1) == 1, "single-path test failed."
+
+
+def multiplePathsTest():
+    """This method checks that the algorithm returns 
+    the correct number of shortest paths, when there 
+    are more than one way of reaching the end node.
+    """
     g = MyGraph()
     v0 = GraphVertex("v0")
     v1 = GraphVertex("v1")
@@ -69,7 +100,13 @@ def test1_1():
 
     assert ret == 2
 
-def test2():
+
+def complicatedPathsTest():
+    """This method checks that the algorithm returns
+    the correct number of shortest paths in the graph, when
+    there are numerous complicated paths reaching the end 
+    node, as well as paths that don't lead to the end node.
+    """
     g = MyGraph()
     start = GraphVertex("start")
     A = GraphVertex("A")
@@ -81,7 +118,6 @@ def test2():
     G = GraphVertex("G")
     H = GraphVertex("H")
     end = GraphVertex("end")
-
     g.insertVertex(start)
     g.insertVertex(A)
     g.insertVertex(B)
@@ -118,29 +154,45 @@ def test2():
     g.insertEdge(F, end, e10)
 
     ret = numShortestPaths(g, start, end)
-
     assert ret == 2
 
+
 def singleVertexTest():
+    """This method tests a special case, and checks that 
+    the number of shortest paths in a graph with one vertex 
+    and no edges is 1.
+    """
     g = MyGraph()
     a = GraphVertex("a")
     g.insertVertex(a)
     assert numShortestPaths(g, a,a) == 1, "Error"
 
+
+def exceptionsTest():
+    """This method checks that the numShortestPaths.py will 
+    throw a InvalidInputException when the input nodes or graph
+    are not valid.
+    """
+    with pytest.raises(InvalidInputException):
+        g = v0 = v1 = None
+        # raises exception because graph and vertices are None.
+        numShortestPaths(g, v0, v1)
+
+    with pytest.raises(InvalidInputException):
+        g = MyGraph()
+        v0 = GraphVertex("v0")
+        v1 = GraphVertex("v1")
+        e0 = GraphEdge("e0", 1)
+        # raises exception because v0, v1 are not vertices of g.
+        numShortestPaths(g, v0, v1)
+
+
 def get_tests():
-    # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    # VERY IMPORTANT
-    # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    # Add the names of each of your test functions to this list. It is very
-    # important that you do this, or the TAs will not run your tests properly
-    # and you will not receive full credit.
-    #
     # DO NOT remove either example test from this list, just add new tests like so:
     #       [example, example, new test,...]
-    # We will not be able to properly grade your coal tests if you do not follow
-    # these instructions! You will lose points on your submission for failing
-    # to follow these instructions.
-    return [sample_test, test1, test1_1, test2, singleVertexTest]
+    return [sample_test, test1, singlePathTest, multiplePathsTest, 
+    complicatedPathsTest, singleVertexTest, exceptionsTest]
+
 
 # DO NOT EDIT BELOW THIS LINE ==================================================
 

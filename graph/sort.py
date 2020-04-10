@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 
+
 class InvalidInputException(Exception):
     def __init__(self,value):
         self.value = value
@@ -9,14 +10,18 @@ class InvalidInputException(Exception):
 
 def merge_sort(array):
     """merge_sort: int array -> int array
-        Purpose: Sort the input array of integers in descending order using the merge sort algorithm
-        Example: merge_sort([4,5,1,3,2]) -> [5,4,3,2,1]
-        Throws: InvalidInputException if list is None
+        Purpose: Sort the input array of integers in descending order 
+        using the merge sort algorithm.
+        Examples: merge_sort([4,5,1,3,2]) -> [5,4,3,2,1]
+                merge_sort([1,2,4]) -> [4,2,1]
+        Throws: InvalidInputException if list is None.
+        This algorithm runs in worst case O(n log(n)) time.
     """
     checkValidInput(array)
 
     n = len(array)
     if n > 1:
+        # divides array into left and right subarrays
         left = array[:n//2]
         right = array[n//2:]
 
@@ -37,23 +42,24 @@ def merge_sort(array):
             array[k] = left[i]
             i += 1
             k += 1
-
         while j < len(right):
             array[k] = right[j]
             j += 1
             k += 1
-
         return array
-   
+   # if size of array is 1 or less, returns the input array.
     else:
         return array
 
 
 def quick_sort(array):
     """quick_sort: int array -> int array
-        Purpose: Sort the input array of integers in descending order using the quicksort algorithm
-        Example: quick_sort([4,5,1,3,2]) -> [5,4,3,2,1]
+        Purpose: Sort the input array of integers in descending order 
+        using the quicksort algorithm.
+        Examples: quick_sort([4,5,1,3,2]) -> [5,4,3,2,1]
+                quick_sort([1,2,4]) -> [4,2,1]
         Throws: InvalidInputException if list is None
+        This algorithm runs in expected case O(n log(n)) time.
     """
     checkValidInput(array)
 
@@ -88,9 +94,13 @@ def quick_sort(array):
 
 def radix_sort(array):
     """radix_sort: int array -> int array
-        Purpose: Sort the input array of integers in descending order using the radixsort algorithm
-        Example: radix_sort([4,5,1,3,2]) -> [5,4,3,2,1]
-        Throws: InvalidInputException if list is None
+        Purpose: Sort the input array of integers in descending order 
+        using the radixsort algorithm.
+        Examples: radix_sort([4,5,1,3,2]) -> [5,4,3,2,1]
+                radix_sort([1,2,4]) -> [4,2,1]
+        Throws: InvalidInputException if list is None/
+        This algorithm runs in worst case O(dn) time, where 
+        d is the number of digits in the largest number.
     """
     checkValidInput(array)
 
@@ -121,8 +131,8 @@ def radix_sort(array):
 
 def radixSortHelper(array, digit):
     """radixSortHalper: int array, int digit
-        Purpose:
-        Example:
+    Purpose: A helper method that is called by radix_sort() 
+    method.
     """
     n = len(array)
     output = [0] * n

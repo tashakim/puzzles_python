@@ -1,6 +1,8 @@
 #!/usr/bin/python3
+
 from sort import *
 import time
+
 
 def sortFile(filename, sortingAlg):
     """sortFile: string, function -> None
