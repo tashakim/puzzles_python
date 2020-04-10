@@ -42,7 +42,9 @@ def merge_sort(array):
             array[k] = right[j]
             j += 1
             k += 1
+
         return array
+   
     else:
         return array
 
@@ -97,21 +99,19 @@ def radix_sort(array):
 
     positive_array = list(filter((0).__lt__, array))
     negative_array = list(filter((0).__gt__, array))
+    negative_array = [-x for x in negative_array]
+    arrs = [positive_array, negative_array]
 
+    for x in arrs:
+        if len(x) > 0:
+            max_element = max(x)
+            digit = 1
+            while max_element // digit > 0:
+                radixSortHelper(x, digit)
+                digit *= 10
 
-    if len(positive_array) > 0:
-        max_element = max(positive_array)
-        digit = 1
-        while max_element // digit > 0:
-            radixSortHelper(positive_array, digit)
-            digit *= 10
+    negative_array = [-x for x in negative_array][::-1]
 
-    if len(negative_array) > 0:
-        max_element = max(negative_array)
-        digit = 1
-        while max_element // digit > 0:
-            radixSortHelper(negative_array, digit)
-            digit *= 10       
     if (0 in array):
         num = array.count(0)
         return positive_array + [0]*num + negative_array
@@ -119,8 +119,11 @@ def radix_sort(array):
     return positive_array + negative_array
 
 
-
 def radixSortHelper(array, digit):
+    """radixSortHalper: int array, int digit
+        Purpose:
+        Example:
+    """
     n = len(array)
     output = [0] * n
     count = [0] * 10
@@ -144,15 +147,10 @@ def radixSortHelper(array, digit):
 
 
 def checkValidInput(array):
+    """checkValidInput: int array
+        Purpose: Throws InvalidInputException if the input
+        list is None, otherwise, does nothing.
+    """
     if array is None:
         raise InvalidInputException('List cannot be empty')
-
-
-if __name__ == "__main__":
-    array = [4,5,1,3,2]
-    print(merge_sort(array))
-    print(quick_sort(array))
-    print(radix_sort(array))   
-    array2 = [-8 ,-9, 0,3]
-    print(radix_sort(array2))
-
+    return
