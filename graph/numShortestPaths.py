@@ -1,9 +1,9 @@
 import numShortestPaths
 from importlib import reload
-
+reload(numShortestPaths)
+from numShortestPaths import *
 from mygraph import *
 import pytest
-
 
 class InvalidInputException(Exception):
     def __str__(self):
@@ -20,28 +20,25 @@ def numShortestPaths(g, start, end):
     if g is None or start is None or end is None:
     	raise InvalidInputException("Invlaid input")
 
-    vertices = []
-    count = 1
+    for v in g.vertices():
+        v.distance = float('inf')
+
     start.distance = 0
-    vertices.append(start)
-    #print("size of vertices is: ", len(vertices))
-    shortestDist = float('inf')
+    start.paths = 1
+    order = []
+    order.append(start)
 
-    while len(vertices) != 0:
-    		item = vertices.pop(0)
-    		if (item != end):
-    			if g.incidentEdges(item) != None:
-	    			for edge in g.incidentEdges(item):
-	    				node = g.opposite(item, edge)
-	    				vertices.append(node)
-	    				node.distance = item.distance + 1
-
-	    				g.removeEdge(edge)
-	    	else:			
-	    				if(item.distance < shortestDist):
-	    					shortestDist = item.distance
-	    					count =1
-	    				elif(item.distance == shortestDist):
-	    					count +=1
-	    				
-    return count
+    while order is not None:
+        visited = order.pop(0)
+        for edge in g.incidentEdges(visited):
+            adjacent = g.opposite(visited, edge)
+            order.append(adjacent)
+            g.removeEdge(edge)
+            if(adjacent.distance > visited.distance +1):
+                adjacent.distance = visited.distance +1
+                adjacent.paths = visited.paths
+            elif(adjacent.distance == visited.distance +1):
+                adjacent.paths += visited.paths
+            return 1
+        if(visited == end):
+            return end.paths
