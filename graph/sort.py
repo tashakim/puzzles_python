@@ -13,34 +13,35 @@ def merge_sort(array):
         Example: merge_sort([4,5,1,3,2]) -> [5,4,3,2,1]
         Throws: InvalidInputException if list is None
     """
-    checkValidity(array)
+    checkValidInput(array)
 
-    if len(array)>1:
-        mid = len(array)//2
-        lefthalf = array[:mid]
-        righthalf = array[mid:]
+    n = len(array)
+    if n > 1:
+        left = array[:n//2]
+        right = array[n//2:]
 
-        merge_sort(lefthalf)
-        merge_sort(righthalf)
-        i=j=k=0       
-        while i < len(lefthalf) and j < len(righthalf):
-            if lefthalf[i] > righthalf[j]:
-                array[k]=lefthalf[i]
-                i=i+1
+        merge_sort(left)
+        merge_sort(right)
+
+        i = j = k = 0       
+        while i < len(left) and j < len(right):
+            if left[i] > right[j]:
+                array[k] = left[i]
+                i += 1
             else:
-                array[k]=righthalf[j]
-                j=j+1
-            k=k+1
+                array[k] = right[j]
+                j += 1
+            k += 1
 
-        while i < len(lefthalf):
-            array[k]=lefthalf[i]
-            i=i+1
-            k=k+1
+        while i < len(left):
+            array[k] = left[i]
+            i += 1
+            k += 1
 
-        while j < len(righthalf):
-            array[k]=righthalf[j]
-            j=j+1
-            k=k+1
+        while j < len(right):
+            array[k] = right[j]
+            j += 1
+            k += 1
         return array
 
 
@@ -50,12 +51,12 @@ def quick_sort(array):
         Example: quick_sort([4,5,1,3,2]) -> [5,4,3,2,1]
         Throws: InvalidInputException if list is None
     """
-    checkValidity(array)
+    checkValidInput(array)
 
     # We define our 3 arrays
-    less = []
+    smaller = []
     equal = []
-    greater = []
+    larger = []
 
     # if the length of our array is greater than 1
     # we perform a sort
@@ -66,16 +67,16 @@ def quick_sort(array):
 
         # recursively go through every element
         # of the array passed in and sort appropriately
-        for x in array:
-            if x < pivot:
-                less.append(x)
-            if x == pivot:
-                equal.append(x)
-            if x > pivot:
-                greater.append(x)
+        for number in array:
+            if number < pivot:
+                smaller.append(number)
+            if number == pivot:
+                equal.append(number)
+            if number > pivot:
+                larger.append(number)
         # recursively call quicksort on gradually smaller and smaller
         # arrays until we have a sorted list.
-        return quick_sort(greater)+equal+quick_sort(less)
+        return quick_sort(larger) + equal + quick_sort(smaller)
     else:
         return array
 
@@ -87,7 +88,7 @@ def radix_sort(array):
         Example: radix_sort([4,5,1,3,2]) -> [5,4,3,2,1]
         Throws: InvalidInputException if list is None
     """
-    checkValidity(array)
+    checkValidInput(array)
 
     max_element = max(array)
     digit = 1
@@ -102,7 +103,7 @@ def radixSortHelper(array, digit):
     output = [0] * n
     count = [0] * 10
 
-    for i in range(0, n):
+    for i in range(n):
         index = array[i] // digit
         count[index % 10] += 1
 
@@ -116,11 +117,11 @@ def radixSortHelper(array, digit):
         count[index % 10] -= 1
         i -= 1
 
-    for i in range(0, n):
+    for i in range(n):
         array[i] = output[n-i-1]
 
 
-def checkValidity(array):
+def checkValidInput(array):
     if array is None:
         raise InvalidInputException('List cannot be empty')
 

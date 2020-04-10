@@ -28,7 +28,24 @@ def simple_test():
     sort_algorithms = [(merge_sort, "Merge sort"), (quick_sort, "Quick sort"), (radix_sort, "Radix sort")]
     for sort_algorithm, name in sort_algorithms:
         assert sort_algorithm([4,5,1,3,2]) == [5,4,3,2,1], "%s failed." % name
-        # Add many, many more asserts here to test your sorts!
+        assert sort_algorithm([1,2,3]) == [3,2,1], "%s failed." % name
+        assert sort_algorithm([0,0,2]) == [2,0,0], "%s failed." % name
+
+def invalidInputTest():
+    with pytest.raises(InvalidInputException):
+        merge_sort(None)
+        quick_sort(None)
+        radix_sort(None)
+
+def emptyListTest():
+    sort_algorithms = [(merge_sort, "Merge sort"), (quick_sort, "Quick sort"), (radix_sort, "Radix sort")]
+    for sort_algorithm, name in sort_algorithms:
+        assert sort_algorithm([]) == [], "%s failed." % name
+
+def singleElementTest():
+    sort_algorithms = [(merge_sort, "Merge sort"), (quick_sort, "Quick sort"), (radix_sort, "Radix sort")]
+    for sort_algorithm, name in sort_algorithms:
+        assert sort_algorithm([0]) == [0], "%s failed." % name
 
 def get_tests():
     # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -43,7 +60,7 @@ def get_tests():
     # We will not be able to properly grade your coal tests if you do not follow
     # these instructions! You will lose points on your submission for failing
     # to follow these instructions.
-    return [example_test_1, simple_test]
+    return [example_test_1, simple_test, invalidInputTest]
 
 # DO NOT EDIT BELOW THIS LINE ==================================================
 
