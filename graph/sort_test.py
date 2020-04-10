@@ -22,6 +22,7 @@ import pytest
 def example_test_1():
     assert 1 == 1, 'Error: 1 does not equal 1!'
 
+
 def simple_test():
     # This loops through all of your sort algorithms, and
     # runs any asserts in the for loop on each one.
@@ -31,21 +32,30 @@ def simple_test():
         assert sort_algorithm([1,2,3]) == [3,2,1], "%s failed." % name
         assert sort_algorithm([0,0,2]) == [2,0,0], "%s failed." % name
 
+
 def invalidInputTest():
     with pytest.raises(InvalidInputException):
         merge_sort(None)
         quick_sort(None)
         radix_sort(None)
 
+
 def emptyListTest():
     sort_algorithms = [(merge_sort, "Merge sort"), (quick_sort, "Quick sort"), (radix_sort, "Radix sort")]
     for sort_algorithm, name in sort_algorithms:
         assert sort_algorithm([]) == [], "%s failed." % name
 
+
 def singleElementTest():
     sort_algorithms = [(merge_sort, "Merge sort"), (quick_sort, "Quick sort"), (radix_sort, "Radix sort")]
     for sort_algorithm, name in sort_algorithms:
         assert sort_algorithm([0]) == [0], "%s failed." % name
+
+
+def negativeElemRadixTest():
+    assert radix_sort([-1, -2, 3]) == [3,-1,-2], "Negative integers failed test"
+    assert radix_sort([-1, -2, 0, 3]) == [3,0,-1,-2], "Negative integers failed test"
+
 
 def get_tests():
     # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -60,7 +70,7 @@ def get_tests():
     # We will not be able to properly grade your coal tests if you do not follow
     # these instructions! You will lose points on your submission for failing
     # to follow these instructions.
-    return [example_test_1, simple_test, invalidInputTest, emptyListTest, singleElementTest]
+    return [example_test_1, simple_test, invalidInputTest, emptyListTest, singleElementTest, negativeElemRadixTest]
 
 # DO NOT EDIT BELOW THIS LINE ==================================================
 

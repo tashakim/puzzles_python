@@ -91,15 +91,33 @@ def radix_sort(array):
         Throws: InvalidInputException if list is None
     """
     checkValidInput(array)
+
     if len(array)<=1:
         return array
 
-    max_element = max(array)
-    digit = 1
-    while max_element // digit > 0:
-        radixSortHelper(array, digit)
-        digit *= 10
-    return array
+    positive_array = list(filter((0).__lt__, array))
+    negative_array = list(filter((0).__gt__, array))
+
+
+    if len(positive_array) > 0:
+        max_element = max(positive_array)
+        digit = 1
+        while max_element // digit > 0:
+            radixSortHelper(positive_array, digit)
+            digit *= 10
+
+    if len(negative_array) > 0:
+        max_element = max(negative_array)
+        digit = 1
+        while max_element // digit > 0:
+            radixSortHelper(negative_array, digit)
+            digit *= 10       
+    if (0 in array):
+        num = array.count(0)
+        return positive_array + [0]*num + negative_array
+  
+    return positive_array + negative_array
+
 
 
 def radixSortHelper(array, digit):
@@ -134,5 +152,7 @@ if __name__ == "__main__":
     array = [4,5,1,3,2]
     print(merge_sort(array))
     print(quick_sort(array))
-    print(radix_sort(array))    
+    print(radix_sort(array))   
+    array2 = [-8 ,-9, 0,3]
+    print(radix_sort(array2))
 
