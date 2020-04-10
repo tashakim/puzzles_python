@@ -13,6 +13,8 @@ def merge_sort(array):
         Example: merge_sort([4,5,1,3,2]) -> [5,4,3,2,1]
         Throws: InvalidInputException if list is None
     """
+    checkValidity(array)
+
     if len(array)>1:
         mid = len(array)//2
         lefthalf = array[:mid]
@@ -48,6 +50,7 @@ def quick_sort(array):
         Example: quick_sort([4,5,1,3,2]) -> [5,4,3,2,1]
         Throws: InvalidInputException if list is None
     """
+    checkValidity(array)
 
     # We define our 3 arrays
     less = []
@@ -84,43 +87,47 @@ def radix_sort(array):
         Example: radix_sort([4,5,1,3,2]) -> [5,4,3,2,1]
         Throws: InvalidInputException if list is None
     """
+    checkValidity(array)
+
     max_element = max(array)
-    place = 1
-    while max_element // place > 0:
-        radixSortHelper(array, place)
-        place *= 10
+    digit = 1
+    while max_element // digit > 0:
+        radixSortHelper(array, digit)
+        digit *= 10
     return array
 
 
-def radixSortHelper(array, place):
-    size = len(array)
-    output = [0] * size
+def radixSortHelper(array, digit):
+    n = len(array)
+    output = [0] * n
     count = [0] * 10
 
-    for i in range(0, size):
-        index = array[i] // place
+    for i in range(0, n):
+        index = array[i] // digit
         count[index % 10] += 1
 
     for i in range(1, 10):
         count[i] += count[i - 1]
 
-    i = size - 1
+    i = n - 1
     while i >= 0:
-        index = array[i] // place
+        index = array[i] // digit
         output[count[index % 10] - 1] = array[i]
         count[index % 10] -= 1
         i -= 1
 
-    for i in range(0, size):
-        array[i] = output[i]
+    for i in range(0, n):
+        array[i] = output[n-i-1]
+
+
+def checkValidity(array):
+    if array is None:
+        raise InvalidInputException('List cannot be empty')
 
 
 if __name__ == "__main__":
     array = [4,5,1,3,2]
     print(merge_sort(array))
-
-    array = [4,5,1,3,2]
     print(quick_sort(array))
-
-    array = [4,5,1,3,2]
     print(radix_sort(array))    
+
