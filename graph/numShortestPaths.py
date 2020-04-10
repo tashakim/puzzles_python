@@ -1,12 +1,5 @@
 #correct solution
 
-import numShortestPaths
-from importlib import reload
-reload(numShortestPaths)
-from numShortestPaths import *
-from mygraph import *
-import pytest
-
 class InvalidInputException(Exception):
     def __str__(self):
         return "Invalid Input given."
