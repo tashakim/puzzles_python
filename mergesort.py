@@ -1,4 +1,5 @@
 def mergeSort(array):
+	# sorts array in ascending order.
 	if len(array) > 1:
 		left = array[:len(array)//2]
 		right  = array[len(array)//2:]
@@ -26,6 +27,7 @@ def mergeSort(array):
 		while iter2 < len(right):
 			iter2 += 1
 			k += 1
+		return array
 
 if __name__ == "__main__":
 	array = [4,3,6,2,2,1,10]
