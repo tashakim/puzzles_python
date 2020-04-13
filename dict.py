@@ -7,6 +7,6 @@ def  dodict(*args, **kwds):
 	d.update(kwds)
 	return d
 
-
-data = makedict(red = 1, blue = 2, green = 3)
-data2 = dodict(*data.items(), yellow = 2, green = 4)
+if __name__ == "__main__":
+	data = makedict(red = 1, blue = 2, green = 3)
+	data2 = dodict(*data.items(), yellow = 2, green = 4)
