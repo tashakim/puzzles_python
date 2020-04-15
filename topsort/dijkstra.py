@@ -20,7 +20,8 @@ def dijkstra(g, src):
         v.distance = float('inf')
     for e in g.edges():
         e._visited == False
-        
+        e._path == False
+
     src.distance = 0
 
     order = []
@@ -36,10 +37,10 @@ def dijkstra(g, src):
             if(adjacent.distance > visited.distance +1):
                 #updates adjacent node's distance
                 adjacent.distance = visited.distance +1
+                g.opposite(visited, adjacent)._path = True
             else: 
                 return
-
-    return MyGraph()
+    return g
 
 
 class InvalidInputException(Exception):
