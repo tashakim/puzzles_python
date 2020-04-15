@@ -15,8 +15,28 @@ def dijkstra(g, src):
     Note: To access the actual vertices in the HeapPriorityQueue,
     you need to call pop().value(), not just pop().
     """
+    for v in g.vertices():
+        # sets distance of all vertices to a very large value.
+        v.distance = float('inf')
+    src.distance = 0
 
+    order = []ß
+    order.append(src)
+    
+    while order is not None:
+        visited = order.pop(0)
+        for edge in g.incidentEdges(visited):
+            adjacent = g.opposite(visited, edge)
+            order.append(adjacent)
+            g.removeEdge(edge)
+
+            if(adjacent.distance > visited.distance +1):
+                #updates adjacent node's distance
+                adjacent.distance = visited.distance +1
+            else: 
+                return
     return MyGraph()
+
 
 class InvalidInputException(Exception):
     def __str__(self):
