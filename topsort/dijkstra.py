@@ -18,23 +18,27 @@ def dijkstra(g, src):
     for v in g.vertices():
         # sets distance of all vertices to a very large value.
         v.distance = float('inf')
+    for e in g.edges():
+        e._visited == False
+        
     src.distance = 0
 
-    order = []ß
+    order = []
     order.append(src)
     
     while order is not None:
         visited = order.pop(0)
-        for edge in g.incidentEdges(visited):
+        for edge in g.incidentEdges(visited) && edge._visited == False:
             adjacent = g.opposite(visited, edge)
             order.append(adjacent)
-            g.removeEdge(edge)
+            edge._visited = True
 
             if(adjacent.distance > visited.distance +1):
                 #updates adjacent node's distance
                 adjacent.distance = visited.distance +1
             else: 
                 return
+
     return MyGraph()
 
 
