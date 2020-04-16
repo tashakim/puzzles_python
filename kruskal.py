@@ -1,3 +1,6 @@
+from mygraph import *
+from heappriorityqueue import *
+
 def kruskal(g):
 	#Input: 
 	#Output:
