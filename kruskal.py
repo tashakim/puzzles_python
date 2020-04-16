@@ -42,4 +42,4 @@ def find(v):
 if __name__ == "__main__":
 	g = MyGraph()
 	my_tree = kruskal(g)
-	
+	my_tree.mygraph()
