@@ -38,3 +38,8 @@ def find(v):
 	if parent[v] != v:
 		parent[v] = find(parent[v])
 	return parent[v]
+
+if __name__ == "__main__":
+	g = MyGraph()
+	my_tree = kruskal(g)
+	
