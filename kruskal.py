@@ -5,7 +5,7 @@ def kruskal(g):
 	#Input: 
 	#Output:
 	for v in g.vertices():
-		# make cloud for v
+		make_cloud(v)
 	min_spanning_tree = []
 	# sort all edges here
 	for e in g.edges(): # edge between u and v
@@ -14,6 +14,10 @@ def kruskal(g):
 			# merge clouds containing u and v
 
 	return min_spanning_tree
+
+def make_cloud(v):
+	parent[v] = v
+	rank[v] = 0
 
 def cloud(a,b):
 	A = find(a)
