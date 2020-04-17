@@ -1,8 +1,8 @@
 """ Topological Sort
 
 """
-
 from mydigraph import *
+
 
 def topological_sort(dag):
     """topological_sort: dag -> list of vertices
@@ -16,7 +16,35 @@ def topological_sort(dag):
              topological_sort(      C -> D ) -> [A, B, C, D]
                                 B -/
     """
-    return []
+    d = {}
+    s = []
+    l = []
+
+    for v in dag.vertices():
+        d[v] = len(dag.incidentEdges(v))
+
+    for key,value in d.items():
+        if(value == 0):
+            s.append(key)
+
+    while s != []:
+        visited = s.pop()
+        l.append(visited)
+
+        for e in dag.emanantEdges(visited):
+            w = dag.opposite(visited, e)
+            print("value of key w is: ", d[w])
+            d[w] -= 1
+            print("value of key w is: ", d[w])
+
+            dag.removeEdge(e)
+            if(0 in d.values()):
+                if(d.get(w) == 0):
+                    s.append(w)
+            else:
+                raise GraphCycleException('Error: Graph is not acyclic.')
+
+    return l
 
 
 class GraphCycleException(Exception):
