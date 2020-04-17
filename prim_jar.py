@@ -21,3 +21,7 @@ def prim(g):
 				# u._prev = vertex
 				# Q.decreaseKey(u, u._cost)
 	return min_spanning_tree
+
+	if __name__ == "__main__":
+		g = MyGraph()
+		prim(g)
