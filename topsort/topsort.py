@@ -33,9 +33,7 @@ def topological_sort(dag):
 
         for e in dag.emanantEdges(visited):
             w = dag.opposite(visited, e)
-            print("value of key w is: ", d[w])
             d[w] -= 1
-            print("value of key w is: ", d[w])
 
             dag.removeEdge(e)
             if(0 in d.values()):
@@ -43,7 +41,6 @@ def topological_sort(dag):
                     s.append(w)
             else:
                 raise GraphCycleException('Error: Graph is not acyclic.')
-
     return l
 
 

@@ -29,6 +29,7 @@ def show_elements(l):
 def example_test_1():
     assert 1 == 1, 'Error: 1 does not equal 1!'
 
+
 def simple_test():
     # Setup graph
     g = MyDigraph()
@@ -48,6 +49,40 @@ def simple_test():
     # There are two possible correct top sorts for this graph
     assert topsorted == [v0, v1, v2] or topsorted == [v1, v0, v2]
 
+
+def acyclicGraphTest():
+    """Purpose: This method tests that the correct exceptions
+    are raised when the input graph is not acyclic.
+    """
+    with pytest raises Execption('GraphCycleException'):
+        g = MyDigraph()
+        v0 = g.insertVertex(GraphVertex(0))
+        v1 = g.insertVertex(GraphVertex(1))
+        v2 = g.insertVertex(GraphVertex(2))
+        g.insertEdge(v0, v1, GraphEdge(0))
+        g.insertEdge(v1, v2, GraphEdge(1))
+        g.insertEdge(v2, v0, GraphEdge(2))
+
+        topological_sort(g)
+
+
+def multipleOrderTest():
+    """Purpose: This method tests that only one of the possible 
+    orders returned from the topsort algorithm.
+    """
+    g = MyDigraph()
+    v0 = g.insertVertex(GraphVertex(0))
+    v1 = g.insertVertex(GraphVertex(1))
+    v2 = g.insertVertex(GraphVertex(2))
+    v3 = g.insertVertex(GraphVertex(3))
+
+    g.insertEdge(v0, v2, GraphEdge(0))
+    g.insertEdge(v1, v2, GraphEdge(1))   
+    g.insertEdge(v1, v3, GraphEdge(2))    
+
+    assert topsorted == [v0, v1, v2] or topsorted == [v0,v1,v3]
+ 
+
 def get_tests():
     # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     # VERY IMPORTANT
@@ -61,7 +96,7 @@ def get_tests():
     # We will not be able to properly grade your coal tests if you do not follow
     # these instructions! You will lose points on your submission for failing
     # to follow these instructions.
-    return [example_test_1, simple_test]
+    return [example_test_1, simple_test, exceptionTest, multipleOrderTest]
 
 # DO NOT EDIT BELOW THIS LINE ==================================================
 

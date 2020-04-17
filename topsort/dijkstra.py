@@ -15,32 +15,47 @@ def dijkstra(g, src):
     Note: To access the actual vertices in the HeapPriorityQueue,
     you need to call pop().value(), not just pop().
     """
+    if g is None or src is None:
+        raise InvalidInputException("Error: Invalid input")
+    if src not in g.vertices():
+        raise InvalidInputException("Error: Invalid src node")
+
     for v in g.vertices():
         # sets distance of all vertices to a very large value.
         v.distance = float('inf')
-    for e in g.edges():
-        e._visited == False
-        e._path == False
-
+        v.prev = None
     src.distance = 0
+    dist = []
+    MST = []
 
-    order = []
-    order.append(src)
-    
-    while order is not None:
-        visited = order.pop(0)
-        for edge in g.incidentEdges(visited) && edge._visited == False:
-            adjacent = g.opposite(visited, edge)
-            order.append(adjacent)
-            edge._visited = True
+    for v in g.vertices():
+        dist.append(v.distance)
 
-            if(adjacent.distance > visited.distance +1):
+    Q = HeapPriorityQueue()
+    for v in g.vertices():
+        v.entry = Q.push(v.distance, v)
+        print("v.entry is:", v.entry)
+    print("Q is: ", Q)
+    print("MST: ", MST)
+    while Q.isEmpty() != True:
+        u = Q.pop().value()
+        for edge in g.incidentEdges(u):
+            v = g.opposite(u, edge)
+            if(v.distance > u.distance + g.connectingEdge(u,v).element()):
                 #updates adjacent node's distance
-                adjacent.distance = visited.distance +1
-                g.opposite(visited, adjacent)._path = True
-            else: 
-                return
-    return g
+                v.distance = u.distance +g.connectingEdge(u,v).element()
+                MST.append(edge)
+                v.prev = u
+                Q.replaceKey(v.entry, v.distance)
+    print("edges are: ",g.edges())
+    print("Q is: ", Q)
+    print("MST is: ", MST)
+    ret_g = MyGraph()
+    for v in g.vertices():
+        ret_g.insertVertex(v)
+    """for e in MST:
+                    ret_g.insertEdge(e)"""
+    return ret_g
 
 
 class InvalidInputException(Exception):
