@@ -248,15 +248,6 @@ class MyGraph(object):
             raise NoSuchEdgeException("there is no edge between these vertices")
 
         return self.__adjMatrix[v1][v2]
-
-    def incidentEdges(self, v):
-        """Returns a list of the edges that a vertex V is connected to.
-
-        Throws InvalidVertexException if the vertex is not in the graph.
-
-        Runs in O(|V|)."""
-        self.__testVertex(v)
-
         return [self.connectingEdge(v, w) for w in self.__vertices if w != v and self.areAdjacent(v, w)]
 
     def opposite(self, v, e):

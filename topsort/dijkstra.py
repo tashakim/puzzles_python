@@ -30,13 +30,11 @@ def dijkstra(g, src):
 
     for v in g.vertices():
         dist.append(v.distance)
-
     Q = HeapPriorityQueue()
+
     for v in g.vertices():
         v.entry = Q.push(v.distance, v)
-        print("v.entry is:", v.entry)
-    print("Q is: ", Q)
-    print("MST: ", MST)
+    
     while Q.isEmpty() != True:
         u = Q.pop().value()
         for edge in g.incidentEdges(u):
@@ -44,15 +42,14 @@ def dijkstra(g, src):
             if(v.distance > u.distance + g.connectingEdge(u,v).element()):
                 #updates adjacent node's distance
                 v.distance = u.distance +g.connectingEdge(u,v).element()
-                MST.append(edge)
+                ret_g.insertEdge(v, u, g.connectingEdge(u,v))
                 v.prev = u
                 Q.replaceKey(v.entry, v.distance)
-    print("edges are: ",g.edges())
-    print("Q is: ", Q)
-    print("MST is: ", MST)
+
     ret_g = MyGraph()
     for v in g.vertices():
         ret_g.insertVertex(v)
+        e = MST.pop(0)
     """for e in MST:
                     ret_g.insertEdge(e)"""
     return ret_g
