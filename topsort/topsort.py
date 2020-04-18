@@ -40,6 +40,7 @@ def topological_sort(dag):
                 if(d.get(w) == 0):
                     s.append(w)
             else:
+                # raises 
                 raise GraphCycleException('Error: Graph is not acyclic.')
     return l
 
