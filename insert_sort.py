@@ -12,4 +12,5 @@ def insert_sort(array):
 	return array
 
 if __name__ == "__main__":
-	
+	array = [2,4,64,1,7]
+	insert_sort(array)
