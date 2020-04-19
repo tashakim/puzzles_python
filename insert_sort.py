@@ -1,4 +1,9 @@
 def insert_sort(array):
+	"""Purpose: Sorts the elements of an array using 
+	insertion sort.
+	Input: array
+	Output:
+	"""
 	for i in range(1, len(array)):
 		key = array[i]
 
