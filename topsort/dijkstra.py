@@ -15,44 +15,57 @@ def dijkstra(g, src):
     Note: To access the actual vertices in the HeapPriorityQueue,
     you need to call pop().value(), not just pop().
     """
+    # raises Exception when graph or source node are null.
     if g is None or src is None:
         raise InvalidInputException("Error: Invalid input")
+    # raises Exception when the source node is not part of input graph.
     if src not in g.vertices():
         raise InvalidInputException("Error: Invalid src node")
 
+
     for v in g.vertices():
-        # sets distance of all vertices to a very large value.
-        v.distance = float('inf')
+        v.distance = float('inf') # initialize distances of all nodes as infinite.
         v.prev = None
-    src.distance = 0
-    dist = []
-    MST = []
+        v.visited = False
+    src.distance = 0 # initialize source node's distance to 0.
 
-    for v in g.vertices():
-        dist.append(v.distance)
-    Q = HeapPriorityQueue()
-
+    Q = HeapPriorityQueue() # Creates an empty heap-priority queue.
     for v in g.vertices():
         v.entry = Q.push(v.distance, v)
-    
-    while Q.isEmpty() != True:
-        u = Q.pop().value()
-        for edge in g.incidentEdges(u):
-            v = g.opposite(u, edge)
-            if(v.distance > u.distance + g.connectingEdge(u,v).element()):
-                #updates adjacent node's distance
-                v.distance = u.distance +g.connectingEdge(u,v).element()
-                ret_g.insertEdge(v, u, g.connectingEdge(u,v))
-                v.prev = u
-                Q.replaceKey(v.entry, v.distance)
 
-    ret_g = MyGraph()
-    for v in g.vertices():
-        ret_g.insertVertex(v)
-        e = MST.pop(0)
-    """for e in MST:
-                    ret_g.insertEdge(e)"""
-    return ret_g
+    while Q.isEmpty()!=True:
+        u = Q.pop().value() # pop the node with smallest priority(distance).
+        neighbor = []
+
+        for v in g.vertices():
+            if(g.areAdjacent(u,v) and v.visited == False):
+                neighbor.append(v)
+
+        for v in neighbor:
+            # update distance and previous node of v.
+            if(v.distance > u.distance + g.connectingEdge(u,v).element()):
+                v.distance = u.distance + g.connectingEdge(u,v).element()
+                v.prev = u 
+                # replace v's key in the priority queue.
+                Q.replaceKey(v.entry, v.distance)
+                u.visited = True
+
+    tree = MyGraph() # creates a new MyGraph object to return.
+    x= g.iterVertices() # iterable vertices, runs in O(1).
+
+    for i in range(g.numVertices()):
+        # insert all vertices and new edges into new MyGraph object(MST).
+        node = next(x)
+        tree.insertVertex(node)
+        
+    x = g.iterVertices()
+    for i in range(g.numVertices()):
+        node = next(x)
+        if(node.prev is not None): # if previous node is in graph, add edge.
+            tree.insertEdge(node, node.prev, g.connectingEdge(node, node.prev))
+
+    # returns the MST of input graph g.
+    return tree
 
 
 class InvalidInputException(Exception):

@@ -1,8 +1,14 @@
 graph
 {
-	0 [label="0"];
-	1 [label="1"];
-	2 [label="2"];
-	0 -- 2 [label=" 0" dir=forward];
-	1 -- 2 [label=" 1" dir=forward];
+	F [label="F"];
+	D--F [label=" e5: 2"];
+	F--E [label=" e6: 3"];
+	D [label="D"];
+	E [label="E"];
+	E--A [label=" e1: 2"];
+	A [label="A"];
+	B--A [label=" e0: 5"];
+	B [label="B"];
+	C--B [label=" e3: 2"];
+	C [label="C"];
 }
