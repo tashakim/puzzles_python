@@ -16,9 +16,13 @@ def topological_sort(dag):
              topological_sort(      C -> D ) -> [A, B, C, D]
                                 B -/
     """
-    d = {}
-    s = []
-    l = []
+    # raises exception when any of the inputs are None
+    if dag is None:
+        raise InvalidInputException("Invalid input")
+
+    d = {} # dictionary to store node and its distance
+    s = [] # stack
+    l = [] # list
 
     for v in dag.vertices():
         d[v] = len(dag.incidentEdges(v))
@@ -39,15 +43,18 @@ def topological_sort(dag):
             if(0 in d.values()):
                 if(d.get(w) == 0):
                     s.append(w)
-            else:
-                # raises 
-                raise GraphCycleException('Error: Graph is not acyclic.')
+
+    # Raises Exception when the DAG is not acyclic.
+    if any(x != 0 for x in d.values()):
+        raise GraphCycleException()    
+    # returns list of vertices in sorted order
     return l
 
 
 class GraphCycleException(Exception):
     def __str__(self):
         return "Topological sort failed. A cycle occured."
+
 
 class InvalidInputException(Exception):
     def __str__(self):

@@ -39,12 +39,8 @@ def simple_test():
     g.insertEdge(v0, v2, GraphEdge(0))
     g.insertEdge(v1, v2, GraphEdge(1))
 
-    g.popup()
     # Run the algorithm
     topsorted = topological_sort(g)
-
-    # Test its output
-    print("Topologically sorted in the order: ", show_elements(topsorted))
 
     # There are two possible correct top sorts for this graph
     assert topsorted == [v0, v1, v2] or topsorted == [v1, v0, v2]
@@ -54,7 +50,7 @@ def acyclicGraphTest():
     """Purpose: This method tests that the correct exceptions
     are raised when the input graph is not acyclic.
     """
-    with pytest raises Execption('GraphCycleException'):
+    with pytest.raises(GraphCycleException):
         g = MyDigraph()
         v0 = g.insertVertex(GraphVertex(0))
         v1 = g.insertVertex(GraphVertex(1))
@@ -62,25 +58,114 @@ def acyclicGraphTest():
         g.insertEdge(v0, v1, GraphEdge(0))
         g.insertEdge(v1, v2, GraphEdge(1))
         g.insertEdge(v2, v0, GraphEdge(2))
-
+            
         topological_sort(g)
 
 
-def multipleOrderTest():
+def validGraphTest():
+    """Purpose: This method tests that the topsort algorithm throws
+    correct exception(InvalidInputException) when input graph is None.
+    """
+    with pytest.raises(InvalidInputException):
+            topological_sort(None)
+
+
+def multiplePathsTest():
     """Purpose: This method tests that only one of the possible 
     orders returned from the topsort algorithm.
     """
+    g =MyDigraph()
+
+    A = g.insertVertex(GraphVertex(0))
+    B = g.insertVertex(GraphVertex(1))
+    C = g.insertVertex(GraphVertex(2))
+    D = g.insertVertex(GraphVertex(3))
+
+    g.insertEdge(A,B, GraphEdge(0))
+    g.insertEdge(A,D, GraphEdge(1))
+    g.insertEdge(C,B, GraphEdge(2))
+    g.insertEdge(C,D, GraphEdge(3))
+
+    topsorted = topological_sort(g)
+
+    assert topsorted == [A,C,B,D] or topsorted == [A,C,D,B] or topsorted == [C,A,B,D] or topsorted == [C,A,D,B]
+
+
+def singleChainTest():
+    """Purpose: This method tests that the topsort algorithm 
+    returns the correct single chain of nodes in the graph.
+    """
     g = MyDigraph()
-    v0 = g.insertVertex(GraphVertex(0))
-    v1 = g.insertVertex(GraphVertex(1))
-    v2 = g.insertVertex(GraphVertex(2))
-    v3 = g.insertVertex(GraphVertex(3))
+    A = g.insertVertex(GraphVertex(0))
+    B = g.insertVertex(GraphVertex(1))
+    C = g.insertVertex(GraphVertex(2))
+    D = g.insertVertex(GraphVertex(3))
 
-    g.insertEdge(v0, v2, GraphEdge(0))
-    g.insertEdge(v1, v2, GraphEdge(1))   
-    g.insertEdge(v1, v3, GraphEdge(2))    
+    g.insertEdge(A, B, GraphEdge(0))
+    g.insertEdge(B, C, GraphEdge(1))   
+    g.insertEdge(C, D, GraphEdge(2)) 
+    topsorted = topological_sort(g)
 
-    assert topsorted == [v0, v1, v2] or topsorted == [v0,v1,v3]
+    assert topsorted == [A, B, C, D]
+
+
+def singleSourceTest():
+    """Purpose: This method tests that when a single source 
+    leads to two different nodes, either one of the orders are
+    returned by the topsort algorithm.
+    """
+    g = MyDigraph()
+    A = g.insertVertex(GraphVertex(0))
+    B = g.insertVertex(GraphVertex(1))
+    C = g.insertVertex(GraphVertex(2))
+
+    g.insertEdge(A, B, GraphEdge(0))
+    g.insertEdge(A, C, GraphEdge(1))   
+    topsorted = topological_sort(g)
+
+    assert topsorted == [A, B, C] or topsorted == [A,C,B]
+
+
+def multipleSourceTest():
+    """Purpose: This method tests that when there are two
+    possible starting points, either one of the orders are
+    returned by the topsort algorithm.
+    """
+    g = MyDigraph()
+    A = g.insertVertex(GraphVertex(0))
+    B = g.insertVertex(GraphVertex(1))
+    C = g.insertVertex(GraphVertex(2))
+
+    g.insertEdge(A, C, GraphEdge(0))
+    g.insertEdge(B, C, GraphEdge(1))   
+    topsorted = topological_sort(g)
+
+    assert topsorted == [A, B, C] or topsorted == [B, A, C]
+
+
+def singleVertexTest():
+    """Purpose: This method tests that when the input DAG
+    is a single vertex, the topsort algorithm returns the
+    single vertex.
+    """
+    single = MyDigraph()
+    A = single.insertVertex(GraphVertex(1))
+
+    assert topological_sort(single) == [A]
+
+
+def disconnectedDAGTest():
+    """Purpose: This method tests that when the input DAG is a
+    disconnected graph, the topsort algorithm still returns 
+    the correct oder.
+    """
+    discon = MyDigraph()
+    A = discon.insertVertex(GraphVertex(0))
+    B = discon.insertVertex(GraphVertex(1))
+    C = discon.insertVertex(GraphVertex(2))   
+    discon.insertEdge(A,C, GraphEdge(0))
+    topsorted = topological_sort(discon)
+    assert topsorted == [A,C,B] or topsorted==[A,B,C] or topsorted == [B,A,C]
  
 
 def get_tests():
@@ -96,7 +181,9 @@ def get_tests():
     # We will not be able to properly grade your coal tests if you do not follow
     # these instructions! You will lose points on your submission for failing
     # to follow these instructions.
-    return [example_test_1, simple_test, exceptionTest, multipleOrderTest]
+    return [example_test_1, simple_test, acyclicGraphTest, multiplePathsTest,
+    singleChainTest, singleSourceTest, multipleSourceTest, validGraphTest,
+    singleVertexTest, disconnectedDAGTest]
 
 # DO NOT EDIT BELOW THIS LINE ==================================================
 
