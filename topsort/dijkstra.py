@@ -1,19 +1,16 @@
 from heappriorityqueue import *
 from mygraph import *
 
+
 def dijkstra(g, src):
-    """ Calculate the shortest path tree from the src in the input
+    """ Purpose:Calculate the shortest path tree from the src in the input
     connected graph g using Dijkstra's algorithm. The elements attached
     to the edges should be the distances. Must run in O((|E| + |V|) log |V|)
     time using the provided HeapPriorityQueue data structure.
 
-    Returns the shortest path tree in the form of a new MyGraph object.
+    Output: Returns the shortest path tree in the form of a new MyGraph object.
     Do not modify the input MyGraph instance.
-
-    Raise the InvalidInputException if input is None or if src is not in g.
-
-    Note: To access the actual vertices in the HeapPriorityQueue,
-    you need to call pop().value(), not just pop().
+    Exception: Raise the InvalidInputException if input is None or if src is not in g.
     """
     # raises Exception when graph or source node are null.
     if g is None or src is None:
@@ -24,17 +21,21 @@ def dijkstra(g, src):
 
 
     for v in g.vertices():
-        v.distance = float('inf') # initialize distances of all nodes as infinite.
+        # initialize distances of all nodes as infinite.
+        v.distance = float('inf') 
         v.prev = None
         v.visited = False
-    src.distance = 0 # initialize source node's distance to 0.
+    # initialize source node's distance to 0.
+    src.distance = 0 
 
-    Q = HeapPriorityQueue() # Creates an empty heap-priority queue.
+    # Creates an empty heap-priority queue.
+    Q = HeapPriorityQueue() 
     for v in g.vertices():
         v.entry = Q.push(v.distance, v)
 
     while Q.isEmpty()!=True:
-        u = Q.pop().value() # pop the node with smallest priority(distance).
+        # pop the node with smallest priority(distance).
+        u = Q.pop().value() 
         neighbor = []
 
         for v in g.vertices():
@@ -50,23 +51,32 @@ def dijkstra(g, src):
                 Q.replaceKey(v.entry, v.distance)
                 u.visited = True
 
-    tree = MyGraph() # creates a new MyGraph object to return.
-    x= g.iterVertices() # iterable vertices, runs in O(1).
 
+    # Create a new MyGraph object to return.
+    tree = MyGraph() 
+    x= g.iterVertices() 
+
+    # iterable vertices, runs in O(1).
     for i in range(g.numVertices()):
-        # insert all vertices and new edges into new MyGraph object(MST).
+        # insert all vertices and new edges into output graph.
         node = next(x)
         tree.insertVertex(node)
-        
+
     x = g.iterVertices()
     for i in range(g.numVertices()):
         node = next(x)
-        if(node.prev is not None): # if previous node is in graph, add edge.
+
+        # if previous node is in graph, add an edge.
+        if(node.prev is not None): 
             tree.insertEdge(node, node.prev, g.connectingEdge(node, node.prev))
 
     # returns the MST of input graph g.
     return tree
 
+
+class CyclicGraphOutputException(Exception):
+    def __str__(self):
+        return "Invalid output given."
 
 class InvalidInputException(Exception):
     def __str__(self):

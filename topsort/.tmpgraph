@@ -1,14 +1,14 @@
 graph
 {
-	F [label="F"];
-	D--F [label=" e5: 2"];
-	F--E [label=" e6: 3"];
-	D [label="D"];
 	E [label="E"];
 	E--A [label=" e1: 2"];
+	F--E [label=" e6: 3"];
 	A [label="A"];
 	B--A [label=" e0: 5"];
+	F [label="F"];
+	D--F [label=" e5: 2"];
 	B [label="B"];
 	C--B [label=" e3: 2"];
+	D [label="D"];
 	C [label="C"];
 }

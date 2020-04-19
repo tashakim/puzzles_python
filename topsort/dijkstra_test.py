@@ -56,7 +56,7 @@ def simple_test():
     ret.popup()
 
 
-def verticesTest():
+def vertexTest():
     """Purpose: This method tests that all the vertices from the 
     original graph are all in our resulting tree.
     """
@@ -114,16 +114,12 @@ def notInGraphTest():
     g.insertEdge(v0, v4, e4)
     g.insertEdge(v0, v3, e5)
 
-
-    # Run the algorithm
     ret = dijkstra(g, v0)
-
-    # Make sure it matches our expectations
     assert e4 not in ret.edges()
     assert e5 not in ret.edges()
 
 
-def singleVertexTest():
+def singleNodeTest():
     """This method tests that an input graph that only has
     one vertex will return the vertex as an output of our 
     dijkstra algorithm.
@@ -132,16 +128,16 @@ def singleVertexTest():
     v0 = GraphVertex("v0")
     g.insertVertex(v0)
 
-    # Run the algorithm
     ret = dijkstra(g, v0)
 
-    # Make sure it matches our expectations
     assert v0 in ret.vertices()
     assert ret.vertices() is not None
 
 
-def complexTest():
-    """Purpose:
+def largeGraphInputTest():
+    """Purpose: This method tests that the dijkstra algorithm 
+    gives the correct output for a large graph with multiple 
+    edges and nodes.
     """
     g = MyGraph()
     A = GraphVertex("A")
@@ -176,7 +172,6 @@ def complexTest():
 
     ret = dijkstra(g, A)
 
-    # Make sure it matches our expectations
     assert e0 in ret.edges()
     assert e3 in ret.edges()
     assert e1 in ret.edges()
@@ -185,6 +180,26 @@ def complexTest():
 
     g.popup()
     ret.popup()
+
+
+def invalidInputTest():
+    """Purpose: This method tests that the dijkstra algorithm raises
+    the appropriate Exception('InvalidInputException') when invalid 
+    graph components / graph are given.
+    """
+    # raises Exception when graph or source node are None.
+
+    with pytest.raises(InvalidInputException):
+        v0 = GraphVertex("v0")
+        dijkstra(None, v0)
+
+    # raises Exception when the source node is not part of input graph.
+
+    with pytest.raises(InvalidInputException):
+        g = MyGraph()
+        v0 = GraphVertex("v0")
+        g.insertVertex(v0)
+        dijkstra(g, v1)
 
             
 def get_tests():
@@ -200,7 +215,8 @@ def get_tests():
     # We will not be able to properly grade your coal tests if you do not follow
     # these instructions! You will lose points on your submission for failing
     # to follow these instructions.
-    return [example_test_1, simple_test, verticesTest, notInGraphTest, complexTest]
+    return [example_test_1, simple_test, vertexTest, notInGraphTest, singleNodeTest, 
+    largeGraphInputTest, invalidInputTest]
 
 # DO NOT EDIT BELOW THIS LINE ==================================================
 

@@ -15,6 +15,8 @@ def topological_sort(dag):
     Example:                    A -\
              topological_sort(      C -> D ) -> [A, B, C, D]
                                 B -/
+    Complexity: Assuming that methods incidentEdges() and emanentEdgest() run in 
+    O(1) time, this algorithm runs in linear O(|V| + |E|) time.
     """
     # raises exception when any of the inputs are None
     if dag is None:
