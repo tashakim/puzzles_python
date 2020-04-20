@@ -198,8 +198,7 @@ def invalidInputTest():
     with pytest.raises(InvalidInputException):
         g = MyGraph()
         v0 = GraphVertex("v0")
-        g.insertVertex(v0)
-        dijkstra(g, v1)
+        dijkstra(g, v0)
 
             
 def get_tests():
