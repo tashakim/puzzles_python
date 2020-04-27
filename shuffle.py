@@ -1,6 +1,6 @@
 import itertools, random
 
-deck = list(itertools.product(range(1,10), ['Spade', 'Heart', 'Diamond', 'Club']))
+deck = list(itertools.product(range(1,10), ['Spades', 'Hearts', 'Diamonds', 'Clubs']))
 
 random.shuffle(deck)
 
