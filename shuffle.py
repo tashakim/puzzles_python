@@ -1,6 +1,15 @@
 import itertools, random
 
-deck = list(itertools.product(range(1,10), ['Spades', 'Hearts', 'Diamonds', 'Clubs']))
+cards = []
+for i in range(1,10):
+	cards.append(i)
+cards.append('Jack')
+cards.append('Queen')
+cards.append('King')
+cards.append('Ace')
+
+suit = ['Spades', 'Hearts', 'Diamonds', 'Clubs']
+deck = list(itertools.product(cards, suit))
 
 random.shuffle(deck)
 
