@@ -1,4 +1,4 @@
-
+_list = ["four", "fives", "eleven"]
 
 def max_string_length(_list):
 	return reduce(max, map(len, _list), 0)
