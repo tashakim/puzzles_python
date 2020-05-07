@@ -4,7 +4,7 @@ import cv2
 from Arduino import Arduino
 import time
 
-board = Arduino("9600", port="/dev/cu.usbmodem14201")
+board = Arduino("9600", port="/dev/cu.usbmodem14301")
 board.pinMode(13, "OUTPUT")
 cap = cv2.VideoCapture(0)
 
