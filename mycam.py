@@ -4,10 +4,12 @@ import cv2
 from Arduino import Arduino
 import time
 
+# Python-Arduino Command API
 board = Arduino("9600", port="/dev/cu.usbmodem14301")
 board.pinMode(13, "OUTPUT")
 cap = cv2.VideoCapture(0)
 
+# OpenCV API
 while(True):
 	ret, frame = cap.read()
 
