@@ -8,9 +8,13 @@ class Zoo:
 	def rename(self, animal1, newName):
 		self.animal1 = newName
 
+	def brush(self, animal):
+		print("Brushed", animal)
+
 if __name__ == "__main__":
 	zoo = Zoo(3, "zebra", "giraffe", "panther")
 	print(zoo.animal1)
 
-	zoo.rename("zebra", "kkamie")
+	zoo.rename("zebra", "my zebra")
 	print(zoo.animal1)
+	zoo.brush(zoo.animal1)
