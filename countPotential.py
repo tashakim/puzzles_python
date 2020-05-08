@@ -7,3 +7,5 @@ for i in range(0, h+1):
 		count =+ 1
 	k = 2**i - count
 
+if __name__ == "__main__":
+	tree = BinTree()
