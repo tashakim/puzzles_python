@@ -25,6 +25,9 @@ class Student(Person):
 		print("Concentration : ", self._concentration)
 		print("Graduation year : ", self._year,"\n")
 
+	def encourage(self):
+		self._name = "encouraged" + self._name
+
 
 if __name__ == "__main__":
 	ayrith = Student("ayrith", 1, "undeclared", 2022)
