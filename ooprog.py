@@ -19,7 +19,7 @@ class Student(Person):
 	def declare(self,concentration):
 		self._concentration = concentration
 
-	def details(self):
+	def printInfo(self):
 		print("Name : ", self._name)
 		print("ID : ", self._ID)
 		print("Concentration : ", self._concentration)
