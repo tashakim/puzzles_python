@@ -26,13 +26,14 @@ class Student(Person):
 		print("Graduation year : ", self._year,"\n")
 
 	def encourage(self):
-		self._name = "encouraged" + self._name
+		self._name = "We encouraged " + self._name + "!"
 
 
 if __name__ == "__main__":
 	ayrith = Student("ayrith", 1, "undeclared", 2022)
 	ayrith.declare("mathematics")
 
-	ayrith.details()
+	ayrith.printInfo()
+	ayrith.encourage()
 
 	print( Person.name(ayrith))
