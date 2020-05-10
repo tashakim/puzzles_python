@@ -12,9 +12,18 @@ class Tree:
 	def child(self):
 		return self._child
 
+	def give(self):
+		self._seedling = Tree(99)
+		return self._seedling 
+
 if __name__ == "__main__":
 	mytree = Tree(3)
 	print("Your root is: ", mytree.root())
 
 	mytree.addChild(1)
 	print("Your child is: ", mytree.child())
+
+	print("Tree wants to give..")
+
+	gift = mytree.give()
+	print(gift.root())
