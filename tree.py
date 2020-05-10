@@ -16,6 +16,12 @@ class Tree:
 		self._seedling = Tree(99)
 		return self._seedling 
 
+class Receiver:
+	def __init__(self, name):
+		self._name = name
+		print("A receiver named ", name, "wants to receive.")
+
+
 if __name__ == "__main__":
 	mytree = Tree(3)
 	print("Your root is: ", mytree.root())
@@ -27,3 +33,7 @@ if __name__ == "__main__":
 
 	gift = mytree.give()
 	print(gift.root())
+
+
+	newReceiver = Receiver("Tasha")
+
