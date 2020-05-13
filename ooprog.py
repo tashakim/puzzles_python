@@ -1,7 +1,6 @@
 #Object oriented programming
 
 class Person:
-
 	def __init__(self, name):
 		self._name = name
 
@@ -9,7 +8,6 @@ class Person:
 		return self._name
 
 class Student(Person):
-
 	def __init__(self, name, ID, concentration, year):
 		self._name = name
 		self._ID = ID
@@ -32,7 +30,6 @@ class Student(Person):
 if __name__ == "__main__":
 	ayrith = Student("ayrith", 1, "undeclared", 2022)
 	ayrith.declare("mathematics")
-
 	ayrith.printInfo()
 	ayrith.encourage()
 
