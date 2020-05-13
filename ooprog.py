@@ -1,5 +1,4 @@
-#Object oriented programming
-
+#OOP
 class Person:
 	def __init__(self, name):
 		self._name = name
