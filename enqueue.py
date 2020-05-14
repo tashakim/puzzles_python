@@ -4,7 +4,6 @@ def enqueue(list, value) :
 	list.append(value)
 	return list
 
-
 def dequeue(list) :
 	if list == [] :
 		print("list is empty")
