@@ -17,6 +17,7 @@ class Tree:
 		return self._seedling 
 
 class Receiver:
+
 	def __init__(self, name):
 		self._name = name
 		print("A receiver named ", name, "wants to receive.")
@@ -28,12 +29,9 @@ if __name__ == "__main__":
 
 	mytree.addChild(1)
 	print("Your child is: ", mytree.child())
-
 	print("Tree wants to give..")
 
 	gift = mytree.give()
 	print(gift.root())
-
-
 	newReceiver = Receiver("Tasha")
 
