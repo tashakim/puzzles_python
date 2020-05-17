@@ -1,10 +1,8 @@
 import scrapy
 
 class RedditSpider(scrapy.Spider):
-	name = "reddit"
-	start_urls = ["https://www.reddit.com/r/gardening/",
-	"https://www.reddit.com/r/gardening/?count=25&after=t3_4vja10"
-	]
+	name = "redditspyder"
+	start_urls = ["https://www.reddit.com/r/dogpictures/"]
 
 
 	def parse(self, response):
