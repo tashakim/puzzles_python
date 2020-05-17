@@ -1,28 +1,27 @@
-# Simple implementation of a queue
+# Simple python implementation of a queue
+def enqueue(mylist, value) :
+	mylist.append(value)
+	return mylist
 
-def enqueue(list, value) :
-	list.append(value)
-	return list
-
-def dequeue(list) :
-	if list == [] :
+def dequeue(mylist) :
+	if mylist == [] :
 		print("list is empty")
-		return list
-	list.remove(list[0])
-	return list
+		return mylist
+	mylist.remove(mylist[0])
+	return mylist
 
 
 if __name__ == "__main__":
-	list = [1,2,3]
-	print(enqueue(list, 4))
-	print(dequeue(list))
+	mylist = [1,2,3]
+	print(enqueue(mylist, 4))
+	print(dequeue(mylist))
 
 	assert dequeue([]) == [], "Error!"
 
 	# Taking in user's input
 	print("what number do you want to enqueue? : ")
 	your_choice = input()
-	enqueue(list, int(your_choice))
+	enqueue(mylist, int(your_choice))
 
 	# List with user's input enqueued.
-	print(list)
+	print(mylist)
