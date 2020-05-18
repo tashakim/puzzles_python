@@ -2,8 +2,8 @@ import scrapy
 
 class RedditSpider(scrapy.Spider):
 	name = "redditspyder"
-	start_urls = ["https://www.reddit.com/r/dogpictures/"]
-
+	start_urls = ["https://www.reddit.com/r/dogpictures/",
+	"https://www.reddit.com/r/catpictures/"]
 
 	def parse(self, response):
 		links = response.xpath("//img/@src")
