@@ -4,9 +4,12 @@ class RedditSpider(scrapy.Spider):
 	name = "redditspyder"
 	start_urls = ["https://www.reddit.com/r/dogpictures/",
 	"https://www.reddit.com/r/catpictures/"]
+	# add urls here
+
 
 	def parse(self, response):
 		links = response.xpath("//img/@src")
+		# creates new html page
 		html = ""
 
 		for link in links:
