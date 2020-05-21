@@ -10,6 +10,6 @@ def dynamic_fibonacci(n) :
 		print("fib[",i,"] is: ", fib[i])
 	return fib[n]
 
-for i in range(0,10):
-	print(dynamic_fibonacci(i))
+for i in range(0,11):
+	print("fib[", i,"] is: ", dynamic_fibonacci(i))
 #dynamic_fibonacci(5)
