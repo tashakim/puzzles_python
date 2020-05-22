@@ -8,9 +8,12 @@ def add_to_structure(x):
 	mylist.append(x)
 	myqueue.append(x)
 
+	print("mylist: ", mylist, ", myqueue: ", myqueue)
+
 def remove_from_structure():
 	mylist.pop()
 	myqueue.pop(0)
+	print("mylist: ", mylist, ", myqueue: ", myqueue)
 
 
 if __name__ == "__main__":
