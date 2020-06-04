@@ -14,13 +14,19 @@ class Queue():
   def print_queue(self):
     print(self.queue)
 
+  def isempty(self):
+    if(self.queue == []):
+      print("queue is empty.")
+    else:
+      print("queue is not empty.")
+
 
 class Stack():
   """Purpose: simple python implementation  of a stack.
   """
   def __init__(self):
     self.stack = []
-    
+
   def push(self, el):
     self.stack.append(el)
 
@@ -29,6 +35,12 @@ class Stack():
 
   def print_stack(self):
     print(self.stack)
+
+  def isempty(self):
+    if(self.stack == []):
+      print("stack is empty.")
+    else:
+      print("stack is not empty.")
 
 
 if __name__ == "__main__":
