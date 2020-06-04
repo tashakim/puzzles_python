@@ -3,8 +3,15 @@ def max_word(s):
 	Example: max_word("Hello world!") -> 1
 	max_word("the quick the fox") -> 2
 	"""
-	list(s)
+	l = s.split()
+	mydict = {}
+	for word in l:
+		mydict[word] = l.count(word)
+	return mydict[max(mydict)]
+
 
 if __name__ == "__main__":
-	print(max_word("Hello world!"))
-	print(max_word("the quick the fox"))
+	
+	assert(max_word("Hello world!") == 1), "Wrong answer"
+	assert(max_word("the quick the fox") == 2), "Wrong answer"
+	print("All tests passed!")
