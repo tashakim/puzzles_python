@@ -15,12 +15,24 @@ class MyQueue():
 		self._queue[self._head] = item
 		print("\nAdded ", item, " to queue.\n")
 
+		if(self._size < self._capacity and self._head < self._capacity -1):
+			self._head +=1
+			self._size +=1
 
-		if(self._head +1 >= self._capacity and self._size == self._capacity):
+		elif(self._size < self._capacity and self._head == self._capacity -1):
+			self._head = 0
+			self._size +=1
+		
+		elif(self._size == self._capacity):
+			self._queue[self._head] = item
+			self._size +=1
 			self._capacity = self._capacity*2
-			self._queue = [None]*self._capacity
-		self._head +=1
-		self._size +=1
+			self._newqueue = []*self._capacity
+			for i in range(self._capacity):
+				self._newqueue[(i+self._capacity)%self._tail] = self._queue[i]
+			self._queue = self._newqueue
+			self._head = self._size -1
+			self._tail = 0
 		return
 
 	def dequeue(self):
@@ -36,12 +48,16 @@ class MyQueue():
 
 if __name__ == "__main__":
 	q = MyQueue(3)
+
 	print("Is queue empty? : ",q.is_empty())
 	print("Capacity of queue is : ", q.capacity())
 	q.enqueue(1)
+
 	print("size of queue is : ", q.size())
 	q.enqueue(1)
 	q.enqueue(1)
+	print("size of queue is : ", q.size())
+
 	q.enqueue(1)
 	print("size of new queue is : ", q.size())
 	print(q._head)
