@@ -1,7 +1,9 @@
 class MySet():
+	"""Purpose: simple implementation of a set ADT
+	"""
 	def __init__(self):
 		self._size = 0
-		self._set = {}
+		self._set = set()
 		print("New set was created.")
 
 	def add(self, item):
@@ -24,14 +26,19 @@ class MySet():
 	def isEmpty(self):
 		return self._size == 0
 
-	def enumerate(self):
-		
+	def print(self):
+		print(self._set)
+		return
+
 
 if __name__ == "__main__":
 	s = MySet()
 	s.add(2)
 	s.add(3)
-	s.remove(2)
+	s.add(2)
+	s.print()
 
+	s.remove(2)
 	print(s.contains(2))
 	print(s.contains(3))
+	s.print()
