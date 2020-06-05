@@ -7,17 +7,20 @@ class MySet():
 		print("New set was created.")
 
 	def add(self, item):
+		# runtime: O(1)
 		self._set.add(item)
 		self._size +=1
 		print(item, " was added to your set.")
 
 	def remove(self, item):
+		# runtime: O(n)
 		self._set.remove(item)
 		self._size -=1
 		print(item, " was removed from your set.")
 		return item
 	
 	def contains(self, item):
+		# runtime: O(n)
 		return item in self._set
 
 	def size(self):
