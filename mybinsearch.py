@@ -1,5 +1,6 @@
 def binarysearch(arr, x):
 	"""Purpose: Python implementation of binary search.
+	Runtime: O(n)
 	"""
 	if(len(arr) == 0):
 		return False
