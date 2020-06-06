@@ -44,4 +44,4 @@ class DFS_traversals():
 
 if __name__ == "__main__":	
 	dfs = DFS_traversals()
-	dfs.preorder(root)
+	dfs.visit("preorder")
