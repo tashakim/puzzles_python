@@ -1,5 +1,6 @@
 def iterBinsearch(arr, x):
-	"""Purpose:
+	"""Purpose: Iterative implementation of binary search in Python.
+	Runtime: O(log(n))
 	"""
 	low = 0
 	hi = len(arr) -1
@@ -17,5 +18,6 @@ def iterBinsearch(arr, x):
 
 if __name__ == "__main__":
 	arr = [5,4,3,2,1]
+
 	print(iterBinsearch(arr, 6))
 	print(iterBinsearch(arr, 4))
