@@ -1,4 +1,8 @@
 class DFS_traversals():
+	"""Purpose: Python implentation of three (3) different 
+	types of depth-first search (Dfs) traversal orders:
+	preorder, postorder, and inorder.
+	"""
 	def __init__(root, order):
 		s = [] # new stack
 		s.append(root)
