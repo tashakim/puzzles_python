@@ -24,3 +24,9 @@ class HashSet():
 	"""Purpose: Simple python implementation of a hash set.
 	"""
 	def __init__(self, size = 256, key_length = 3):
+
+		# check  invalid  inputs
+
+		self._expSize = size
+		self._keyLength = key_length
+		
