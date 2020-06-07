@@ -41,7 +41,8 @@ class HashSet():
 		self._hashSet = [ [] for i in range(p)]
 		self._hashSize = 0
 
-		
+		# Initialize  other instance  variables.
+
 
 
 
