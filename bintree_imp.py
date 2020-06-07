@@ -34,6 +34,9 @@ class Node:
 
 
 	def parent(self, node):
+		"""Purpose: Sets the input node as the parent 
+		of node.
+		"""
 		return self._parent
 
 	def left(self):
@@ -45,6 +48,8 @@ class Node:
 	def children(self):
 		"""Purpose: returns the children of node.
 		"""
+		if(self._left == None and self._right == None):
+			return None
 		return [self._left, self._right]
 
 	def addLeft(self, value):
@@ -83,8 +88,6 @@ class Node:
 		"""
 		return 
 
-
-
 class BinTree:
 	"""Purpose: Implementation of a node-and-link based Binary Tree structure
 	"""
@@ -96,8 +99,14 @@ class BinTree:
 		self._size = 0
 
 	def __str__(self):
-		result = "Size: " +
-		return 
+		result = "Size: " + self._size + ", "
+		result += "Height: " + self._height +", "
+		if(self.isEmpty()):
+			result += "Empty tree."
+		else:
+			result += "Root: " + self._root + "."
+
+		return result
 
 	def root(self):
 		"""Purpose: Returns the root of the binary tree.
@@ -112,6 +121,7 @@ class BinTree:
 	def children(self, node):
 		"""Purpose: Returns the children of the input node.
 		"""
+		return node.children()
 
 	def isEmpty(self):
 		"""Purpose: Returns a boolean, indicating whether the binary tree is empty.
@@ -126,22 +136,64 @@ class BinTree:
 		return self._height
 
 	def isInternal(self, node): 
+		"""Purpose:  Returns a boolean, indicating whether 
+		input node is an internal node in the binary tree.
+		"""
+		return  node.hasChildren()
 
 	def isExternal(self, node):
+		"""Purpose: Returns a  boolean, indicating whether
+		the input node is an external node in the binary tree.
+		"""
+		return node.hasChildren() != True
 
 	def isRoot(self, node): 
+		"""Purpose: Returns a boolean, indicating whether the 
+		input node is a root node in the binary tree.
+		"""
+		if(self._size == 0):
+			print("Tree is empty. Root does not exist.")
+			return False
+
+		return node == self._root
 
 	def left(self, node):
+		"""Purpose:  Returns the left child of the input node.
+		"""
+		return node.left()
 
 	def right(self, node): 
+		"""Purpose: Returns the right child of the input node.
+		"""
+		return node.right()
 
 	def hasLeft(self, node):
+		"""Purpose: Returns a boolean, indicating whether 
+		the input node has a left child.
+		"""
+		if(node.hasLeft()):
+			return True
+		return False 
 
 	def hasRight(self, node):
+		"""Purpose: Returns a boolean, indicating whether 
+		the input node has a right child.
+		"""
+		if(node.hasRight()):
+			return True
+		return False
 
 	def addRoot(self, e):
+		"""Purpose: Adds a root node to the binary tree.
+		"""
+		self._root = e
+		return 
 
 	def addLeft(self, node, e):
+		node.left() == e
+		return 
 
 	def addRight(self, node, e):
+		node.right() == e
+		return
 
