@@ -29,4 +29,13 @@ class HashSet():
 
 		self._expSize = size
 		self._keyLength = key_length
-		
+
+		#  first, find the smallest prime greater than  
+		# the expected size.
+		if(self._expSize <= 256):
+			prime = smallestPrime(256)
+		else:
+			prime = smallestPrime(self._expSize)
+
+		# underlying array forthe hash set.
+		self._
