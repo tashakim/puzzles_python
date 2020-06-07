@@ -83,3 +83,65 @@ class Node:
 		"""
 		return 
 
+
+
+class BinTree:
+	"""Purpose: Implementation of a node-and-link based Binary Tree structure
+	"""
+	def __init__(self):
+		self._root = None
+		self._left = None
+		self._right = None
+		self._height = 0
+		self._size = 0
+
+	def __str__(self):
+		result = "Size: " +
+		return 
+
+	def root(self):
+		"""Purpose: Returns the root of the binary tree.
+		"""
+		return self._root
+
+	def parent(self, node):
+		"""Purpose: Returns the parent of the input node.
+		"""
+		return node.parent()
+
+	def children(self, node):
+		"""Purpose: Returns the children of the input node.
+		"""
+
+	def isEmpty(self):
+		"""Purpose: Returns a boolean, indicating whether the binary tree is empty.
+		"""
+		return self._size == 0
+
+
+	def size(self):
+		return self._size
+
+	def height(self):
+		return self._height
+
+	def isInternal(self, node): 
+
+	def isExternal(self, node):
+
+	def isRoot(self, node): 
+
+	def left(self, node):
+
+	def right(self, node): 
+
+	def hasLeft(self, node):
+
+	def hasRight(self, node):
+
+	def addRoot(self, e):
+
+	def addLeft(self, node, e):
+
+	def addRight(self, node, e):
+
