@@ -59,7 +59,7 @@ class Node:
 			print("Node already has a left child.")
 			return self._left
 
-		return self._left = Node(self, value)
+		return self._left == Node(self, value)
 
 	def addRight(self, value):
 		"""Purpose: adds right child to this node.
@@ -68,7 +68,7 @@ class Node:
 			print("Node already has a right child.")
 			return self.right
 
-		return self._right = Node(self, value)
+		return self._right == Node(self, value)
 
 	def hasLeft(self):
 		"""Purpose: returns a boolean, indicating whether this node has a left node or not.
@@ -186,14 +186,20 @@ class BinTree:
 	def addRoot(self, e):
 		"""Purpose: Adds a root node to the binary tree.
 		"""
-		self._root = e
+		if(self._root == None):
+			self._root = Node(None, e)
+		self._size += 1
 		return 
 
 	def addLeft(self, node, e):
-		node.left() == e
+		if(self._left == None):
+			self._left = Node(node, e)
+		self._size +=1 
 		return 
 
 	def addRight(self, node, e):
-		node.right() == e
+		if(self._right == None):
+			self._right = Node(node, e)
+		self._size += 1
 		return
 
