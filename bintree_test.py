@@ -8,9 +8,19 @@ def simpleTest():
 	t.addRoot("A")
 
 	assert(t.root().value() == "A"), "Wrrong value"
+# add more tests here
+def exceptionTest():
+	"""Purpose: Tests that the binary tree module throws 
+	correct Exceptions.
+	"""
+	t2.BinTree()
+	with pytest.raises(InvalidInputException):
+		###
+		
+
 
 def get_tests():
-	return [simpleTest]
+	return [simpleTest] # add tests to list
 
 if __name__ == "__main__":
 	print("Running tests...")

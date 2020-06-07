@@ -1,3 +1,15 @@
+class EmptyTreeException(Exception):
+	def__init__(self, value):
+		self._value = value
+	def__str__(self):
+		return repr(self._value)
+class InvalidInputException(Exception):
+	def __init__(self, value):
+		self._value = value
+	def __str__(self):
+		return repr(self._value)
+
+
 class Node:
 	"""Purpose: Implements a node of a binary tree.
 	"""
@@ -79,6 +91,7 @@ class Node:
 		"""Purpose: returns a boolean, indicating whether this node has a right node or not.
 		return self._right != None
 		"""
+		return self._right != None
 
 	def value(self):
 		return self._value
