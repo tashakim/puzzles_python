@@ -1,4 +1,7 @@
 class InvalidInputException:
+	"""Purpose: Exception will be raised when array input
+	is invalid.
+	"""
 	pass
 
 def selection_sort2(arr):
