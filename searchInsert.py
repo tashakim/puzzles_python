@@ -1,4 +1,3 @@
-    
 def searchInsert(nums, target):
     """Purpose: Returns the index if target is found.
     If not, returns the index where it would be if it were inserted in order.
@@ -9,7 +8,6 @@ def searchInsert(nums, target):
         return 0
     if(target > nums[-1]):
         return len(nums)
-
         
     for i in range(len(nums)-1):
         if(nums[i] < target and nums[i+1] >= target):  
