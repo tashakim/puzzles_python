@@ -16,3 +16,7 @@ class Solution:
                 return i+1
             
                 
+if __name__ == "__main__":
+    a = [1,3,5,6]
+    b = [0]
+    assert(searchInsert(a,2) == 1), "Wrong answer"
