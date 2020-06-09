@@ -20,3 +20,9 @@ if __name__ == "__main__":
     a = [1,3,5,6]
     b = [0]
     assert(searchInsert(a,2) == 1), "Wrong answer"
+    assert(searchInsert(a,3) == 2), "Wrong  answer"
+    assert(searchInsert(a,6) == 4), "Wrong answer"
+    assert(searchInsert(a, 10) == 4), "Wong answer"
+
+    assert(searchInsert(b, 0) == 1), "Wrong"
+    print("All tests passed!")
