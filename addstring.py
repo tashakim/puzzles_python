@@ -4,7 +4,7 @@ class InvalidInputException:
 class Solution:
 
     def addStrings(self, num1: str, num2: str) -> str:
-        if(!isinstance(num1, str) or !isinstance(num2, str)):
+        if(isinstance(num1, str)!=True or !isinstance(num2, str)!=True):
         	raise InvalidInputException("Input is invalid.")
        
        return str(int(num1) + int(num2))
