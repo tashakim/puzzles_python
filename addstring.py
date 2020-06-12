@@ -13,3 +13,4 @@ class Solution:
 if __name__ == "__main__":
 	s = Solution()
 	assert(s.addStrings("0","0") == "0"), "Wrong answer."
+	assert(s.addStrings("10","1") == "11"), "Wrong answer."
