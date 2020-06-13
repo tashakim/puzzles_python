@@ -1,3 +1,12 @@
+class LinkedList:
+	def __init__(self):
+		self._head = None
+
+class Node:
+	def __init__(self, value):
+		self._value = value
+		self._next = None
+
 def linkedlistDel1(n):
 	"""Purpose: Takes in a node n, and deletes
 	the node after node n. 
@@ -19,7 +28,7 @@ def smartDel(n):
 	"""
 
 def test():
-	
+
 
 if __name__ == "__main__":
 	test()
