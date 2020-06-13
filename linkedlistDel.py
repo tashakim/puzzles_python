@@ -2,10 +2,22 @@ class LinkedList:
 	def __init__(self):
 		self._head = None
 
+	def __repr__(self):
+		node = self._head
+		nodes = []
+		while node is not None:
+			nodes.append(node._value)
+			node = node._next
+		nodes.append("None")
+		return "->".join(nodes)
+
 class Node:
 	def __init__(self, value):
 		self._value = value
 		self._next = None
+	def __repr__(self):
+		return self._value
+
 
 def linkedlistDel1(n):
 	"""Purpose: Takes in a node n, and deletes
