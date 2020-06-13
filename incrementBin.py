@@ -5,7 +5,10 @@ def increment(k):
 	"""
 	if(k[-1] == 1):
 		k.pop()
-
+		return increment(k[:-1])
+		
+	elif(k[-1] == 0):
+		k[-1] +=1
 
 
 if __name__ == "__main__":
