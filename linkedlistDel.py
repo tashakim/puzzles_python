@@ -11,10 +11,15 @@ def linkedlistDel2(n, head):
 	head is the first node in the list.
 	Runtime complexity: O(k)
 	"""
-	
+
 
 def smartDel(n):
 	"""Purpose: Removes a node n from the list.
 	Runtime complexity: O(1)
 	"""
 
+def test():
+	
+
+if __name__ == "__main__":
+	test()
