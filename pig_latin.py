@@ -11,3 +11,11 @@ def pig_latin(text):
 		if(word == "!" or word == "?"):
 			res += word + " "
 	return res[:-1]
+
+def better_sol(text):
+	res = ""
+	for word in text.split():
+		res += word[1:]+word[0]+"ay "
+		if(word=="!" or word=="?"):
+			res = res[:-2]
+	return res[:-1]
