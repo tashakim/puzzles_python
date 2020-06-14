@@ -16,6 +16,6 @@ def better_sol(text):
 	res = ""
 	for word in text.split():
 		res += word[1:]+word[0]+"ay "
-		if(word=="!" or word=="?"):
+		if(not word.isalpha()):
 			res = res[:-2]
 	return res[:-1]
