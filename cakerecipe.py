@@ -6,7 +6,7 @@ def cakerecipe(recipe, available):
 	min_n = float("inf")
 	for item in recipe:
 		if(item not in available):
-			print("Ingredient is not available.")
+			print("Ingredient: ", item, " is not available.")
 			return 0
 		if(available[item]//recipe[item] < min_n):
 			min_n = available[item]//recipe[item]
@@ -24,4 +24,4 @@ if __name__ == "__main__":
 	available = {"sugar": 500, "flour": 2000, "milk": 2000}
 	assert(cakerecipe(recipe, available) == 0), "Wrong answer."
 
-	print("All tests passed!")
+	print("\nAll tests passed!")
