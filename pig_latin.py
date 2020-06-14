@@ -9,7 +9,7 @@ def pig_latin(text):
 		if(word != "!" and word != "?"):
 			res += word[1:] + word[0] + "ay "
 		if(word == "!" or word == "?"):
-			res += word + " "0
+			res += word + " "
 	return res[:-1]
 
 def better_sol(text):
