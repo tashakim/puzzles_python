@@ -9,7 +9,7 @@ def pig_latin(text):
 		if(word != "!" and word != "?"):
 			res += word[1:] + word[0] + "ay "
 		if(word == "!" or word == "?"):
-			res += word + " "
+			res += word + " "0
 	return res[:-1]
 
 def better_sol(text):
@@ -19,3 +19,10 @@ def better_sol(text):
 		if(not word.isalpha()):
 			res = res[:-2]
 	return res[:-1]
+
+
+if __name__ == "__main__":
+	print(pig_latin("Tours de loot !"))
+	assert(better_sol("Tours de !") == pig_latin("Tours de !")), "Wrong answer"
+
+	print("Test passed!")
