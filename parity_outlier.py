@@ -23,13 +23,13 @@ def find_outlier(arr):
 
 
 def better_sol(arr):
+	# Shorter solution
 	odd = [x for x in arr if x%2 ==1] # list of odds
 	even = [x for x in arr if x%2 ==0] # list of evens
-
 	return odd[0] if len(odd) ==1 else even[0]
 
-
-def test():
+ 
+def test_functions():
 	a = [2, 4, 0, 100, 4, 11, 2602, 36]
 	assert(find_outlier(a) == 11), "Wrong answer." 
 	assert(find_outlier(a) == better_sol(a))
@@ -44,5 +44,5 @@ def test():
 
 
 if __name__ == "__main__":
-	test()
+	test_funtions()
 	print("All tests passed!")
