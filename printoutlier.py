@@ -1,5 +1,7 @@
 def find_outlier(integers):
-	"""Purpose: 
+	"""Purpose: Given an array either entirely
+	comprised of odd or even integers except for 
+	a single integer N, returns this 'outlier'.
 	"""
     d = {}
     v = [None]*len(integers)
@@ -12,3 +14,4 @@ def find_outlier(integers):
         return list(d.keys())[list(d.values()).index(0)]
     else:
         return list(d.keys())[list(d.values()).index(1)]
+
