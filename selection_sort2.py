@@ -33,6 +33,25 @@ def bubble_sort(arr):
 	return arr
 
 
+def insertion_sort(arr):
+	"""Purpose: Simple python implementation  of insertion sorting
+	algorithm.
+	"""
+	if (arr == None or arr == []):
+		raise InvalidInputException("Array is invalid.")
+
+	for i in range(1, len(arr)):
+		el = arr[i]
+		k = i-1
+
+		while(k >= 0 and el < arr[k])
+			arr[k+1] = arr[k]
+			k -=1
+		arr[k+1] = el
+	
+	return arr
+
+
 if __name__ == "__main__":
 	a = [5,3,2,4,1]
 	b = [23,41,50,0,3]
