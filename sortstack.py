@@ -53,5 +53,3 @@ class SortStack:
 
 if __name__ == "__main__":
 	s= SortStack()
-	test()
-
