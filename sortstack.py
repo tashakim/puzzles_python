@@ -18,7 +18,7 @@ class SortStack:
 			self._data.append(item)
 			self._size +=1
 			self._top +=1
-			
+
 		# sorts all items AFTER appending.
 		for i in self._data:
 			if i > item:
@@ -33,7 +33,8 @@ class SortStack:
 			self._data.pop(self._top)
 			self._size -=1
 			self._top -=1
-		# sorts remaining items after removing.
+		#items are already sorted.
+
 		return
 
 
