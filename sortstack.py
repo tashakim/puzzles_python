@@ -46,6 +46,10 @@ class SortStack:
 	def printStack(self):
 		return
 
+	def test():
+		return
+
 if __name__ == "__main__":
 	s= SortStack()
+	test()
 
