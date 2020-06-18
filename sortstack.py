@@ -46,15 +46,10 @@ class SortStack:
 			return True
 		return False
 
-
 	def printStack(self):
+		print(self._data)
 		return
 
-	def test():
-		s1 = sortStack()
-		for i in ragne(3):
-			s1.push(i)
-		return
 
 if __name__ == "__main__":
 	s= SortStack()
