@@ -4,15 +4,14 @@ class EmptyStackException(Exception):
 class SortStack:
 	"""Purpose: Sorts a stack such that the smallest items
 	are on the top.
-	Idea 1: hint: sort elements within stack.
-	Idea 2 hint: use three stacks, two of which are temporary.
+	Idea 1: sort elements within stack.
+	Idea 2: use three stacks, two of which are temporary.
 	"""
 	def __init__(self, cap):
 		self._data = [None]*cap
 		self._capacity = cap
 		self._size = 0
 		self._top = 0
-		return
 
 	def push(self, item):
 		if(self._size < self._capacity):
