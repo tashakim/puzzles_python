@@ -18,7 +18,11 @@ class SortStack:
 			self._data.append(item)
 			self._size +=1
 			self._top +=1
-		# sorts all items after appending.
+			
+		# sorts all items AFTER appending.
+		for i in self._data:
+			if i > item:
+				self._data[i] = item
 		return
 
 
