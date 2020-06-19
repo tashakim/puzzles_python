@@ -1,7 +1,8 @@
 import math
 
 def primeFactors(n):
-    """Imperfect
+    """Returns the prime factor decomposition of n. 
+    Result is a string of the form:  "(p1**n1)(p2**n2)...(pk**nk)".
     """
     factors = []
     for i in range(2, math.ceil(math.sqrt(n))):
@@ -21,7 +22,6 @@ def primeFactors(n):
 def better_sol(n):
     i = 2
     factors = []
-    res=""
     while i*i <= n:
         if(n%i):
             i+=1
@@ -30,15 +30,18 @@ def better_sol(n):
             factors.append(i)
     if(n>1):
         factors.append(n)
-    return factors
+    return factor_rep(factors)
 
 
-"""def factor_rep(factors):
-    res = ""
-    for i in factors:
-        res.join(""("+str(i)+")"")
-    print(res)
-    return res"""
+def factor_rep(factors):
+    """String representation. 
+    """
+    """res = ""
+                for i in factors:
+                    res.join(""("+str(i)+")"")
+                print(res)
+                return res"""
+    return
 
 
 if __name__ == "__main__":
