@@ -30,7 +30,7 @@ def better_sol(n):
             factors.append(i)
     if(n>1):
         factors.append(n)
-    return factor_rep(factors)
+    return factors # call factor_rep(factors)
 
 
 def factor_rep(factors):
