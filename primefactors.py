@@ -17,9 +17,11 @@ def primeFactors(n):
     res = "".join(factors)
     return res
 
+
 def better_sol(n):
     i = 2
     factors = []
+    res=""
     while i*i <= n:
         if(n%i):
             i+=1
@@ -28,7 +30,16 @@ def better_sol(n):
             factors.append(i)
     if(n>1):
         factors.append(n)
-    return factors 
+    return factors
+
+
+"""def factor_rep(factors):
+    res = ""
+    for i in factors:
+        res.join(""("+str(i)+")"")
+    print(res)
+    return res"""
+
 
 if __name__ == "__main__":
     print(better_sol(7775460))
