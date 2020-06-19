@@ -31,3 +31,4 @@ def better_sol(n):
     return factors 
 
 if __name__ == "__main__":
+    print(better_sol(7775460))
