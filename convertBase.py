@@ -15,14 +15,13 @@ def compareNumbers(bin, hex):
 def convert(n, base):
 	"""Purpose: Converts the number written in base 'base'.
 	"""
-	val = 0
-	for i in range(n):
-		n = int(n)
-		if(n <0 or n >= base):
-			return -1
-		exp = n -1 -i
-		val += n*(base**exp)
-	return val
+	if(n == 0):
+		return [0]
+	res = []
+	while(n):
+		res.append(int(n%base))
+		n//=base
+	return res[::-1]
 
 
 if __name__ == "__main__":
