@@ -20,3 +20,6 @@ def convert(n, base):
 	return val
 
 
+if __name__ == "__main__":
+	assert(compareNumbers(10, 2) == True), "Wrong number."
+	
