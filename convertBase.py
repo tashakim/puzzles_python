@@ -5,9 +5,9 @@ def compareNumbers(bin, hex):
 	binary number (passed in as string) equals the 
 	hexadecimal representation of a string.
 	"""
-	n1 = "".join(convert(bin, 2))
-	n2 = "".join(convert(hex, 16))
-	if(n1 < 0 or  n2< 0):
+	n1 = convert(bin, 2)
+	n2 = convert(hex, 16)
+	if(toDigit(n1) < 0 or toDigit(n2) < 0):
 		return False
 	return n1 == n2
 
@@ -21,12 +21,20 @@ def convert(n, base):
 	while(n):
 		res.append(int(n%base))
 		n //= base
-	return res[::-1]:
+	return res[::-1]
+	
 
-def toDigit(n):
-	return
+def toDigit(list):
+	list = [str(x) for x in list]
+	return int("".join(list))
+
 
 if __name__ == "__main__":
-	
+	print(toDigit(convert(2, 2)))
+	print(toDigit(convert(2, 16)))
+
 	assert(compareNumbers(10, 2) == True), "Wrong answer."
-	print("Test passed!")
+	assert(compareNumbers(1, 1) == True), "Wrong answer."
+	assert(compareNumbers(111, 3) == False), "Wrong answer."
+
+	print("All tests passed!")
