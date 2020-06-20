@@ -13,7 +13,7 @@ def convert(n, base):
 	"""
 	for i in range(len(n)):
 		n = int(n)
-		if(n<0 || n >= base):
+		if(n <0 or n >= base):
 			return -1
 		exp = len(n) -1 -i
 		val += n*Math.pow(base, exp)
@@ -22,4 +22,4 @@ def convert(n, base):
 
 if __name__ == "__main__":
 	assert(compareNumbers(10, 2) == True), "Wrong number."
-	
+	print("Test passed!")
