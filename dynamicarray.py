@@ -12,6 +12,9 @@ class DynamicArray():
 		self._capacity = cap
 		self._array = [None]*cap
 
+	def __repr__(self):
+		return "<array object returned>"
+
 	def __len__(self):
 		"""Purpose: Returns the number of elements in the array.
 		"""
@@ -89,3 +92,5 @@ if __name__ == "__main__":
 
 	print(a[0])
 	print(a[1])
+
+	print(a)

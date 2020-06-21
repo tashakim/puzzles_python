@@ -29,10 +29,8 @@ if __name__ == "__main__":
 		i += 1
 
 	print()
-	i = 0
 	for item in listGenerator(3):
 		print("list generator ", i, ": ", item)
-		i += 1
 
 	print()
 	for item in infGenerator():
