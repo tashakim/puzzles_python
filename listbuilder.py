@@ -8,7 +8,7 @@ def listbuilder(n):
 	return nums_list
 
 sum_to_n = sum(listbuilder(1000))
-print(sum_to_n)
+print(sum_to_n) # 499,500
 
 class better_builder(object):
 	"""Purpose: Improves space complexity of listbuilder.
@@ -34,5 +34,17 @@ class better_builder(object):
 
 
 sum_to_n = sum(better_builder(1000))
-print(sum_to_n)
+print(sum_to_n) # 499,500
+
+def generator(n):
+	num = 0
+	while(num < n):
+		yield num
+		num += 1
+
+for item in generator(3):
+	print(item)
+
+sum_to_n = sum(generator(1000))
+print(sum_to_n) # 499,500
 
