@@ -34,16 +34,28 @@ def modular_sol(arr):
 	return arr
 
 def getMinIndex(arr):
+	"""Purpose: Helper method for modular_sol()
+	Output: index of 'arr' that contains minimum integer
+	"""
 	return arr.index(min(arr))
 
 def getMaxIndex(arr):
+	"""Purpose: Helper method for modular_sol()
+	Output: index of 'arr' that contains maximum integer
+	"""
 	return arr.index(max(arr))
 
 def swapIndices(arr, minIndex, maxIndex):
+	"""Purpose: Helper method for modular_sol()
+	Output: 'arr', with minimum and maximum indices swapped.
+	"""
 	arr[minIndex], arr[maxIndex] = arr[maxIndex], arr[minIndex]
 	return arr
 
 def testValidInput():
+	"""Purpose: Tests that both methods raise correct 
+	Exception when invalid input is given.
+	"""
 	with pytest.raises(InvalidInputException):
 		swapMinMax([])
 		swapMinMax(None)
