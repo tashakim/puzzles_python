@@ -28,15 +28,6 @@ class HashTable:
 		"""
 		return hash(key) % self._length
 
-	def get_value(self, key):
-		"""Purpose: Returns the value associated with
-		'key' in the hash table.
-		"""
-		if(self[key] is not None):
-			return self[key]
-		else:
-			raise InvalidKeyException("Key is invalid. Try again.")
-
 
 	def insert(self, key, value):
 		"""Purpose: Appends a value to the hash table,
@@ -49,11 +40,14 @@ class HashTable:
 	def find(self, key):
 		"""Purpose: Gets a value in hash table by key.
 		"""
-		return
+		if(self[key] is not None):
+			return self[key]
+		else:
+			raise InvalidKeyException("Key is invalid. Try again.")
 
 	def delete(self, key):
 		"""Purpose: Removes a value from the hash table.
 		"""
 		return
-		
+
 
