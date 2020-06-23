@@ -50,4 +50,6 @@ class HashTable:
 		"""
 		return
 
+if __name__ == "__main__":
+	h = HashTable()
 
