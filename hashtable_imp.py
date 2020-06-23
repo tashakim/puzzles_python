@@ -53,6 +53,8 @@ class HashTable:
 		"""
 		if(self._table is None):
 			raise EmptyHashtableException("Hashtable is empty. Try again.")
+		if(self[key] is None):
+			raise InvalidKeyException("Key does not exist. Try again.")
 		return
 
 if __name__ == "__main__":
