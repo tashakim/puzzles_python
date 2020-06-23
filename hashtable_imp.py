@@ -1,3 +1,6 @@
+class EmptyHashtableException(Exception):
+	pass
+
 class InvalidKeyException(Exception):
 	"""Exception is raised when key does not exist
 	in the hashtable.
@@ -48,6 +51,8 @@ class HashTable:
 	def delete(self, key):
 		"""Purpose: Removes a value from the hash table.
 		"""
+		if(self._table is None):
+			raise EmptyHashtableException("Hashtable is empty. Try again.")
 		return
 
 if __name__ == "__main__":
