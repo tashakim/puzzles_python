@@ -10,7 +10,7 @@ class InvalidKeyException(Exception):
 class HashTable:
 	"""Simple python implementation of a hash table.
 	"""
-	def __init__(self, n = 5)
+	def __init__(self, n = 5):
 		self._table = [[] for x in range(n)]
 		self._hashtable_size = n
 
@@ -64,6 +64,6 @@ class HashTable:
 
 if __name__ == "__main__":
 	h = HashTable()
-	h.insert((2,3))
+	h.insert(2,3)
 	h.printHashtable()
 
