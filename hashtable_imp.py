@@ -57,8 +57,13 @@ class HashTable:
 			raise InvalidKeyException("Key does not exist. Try again.")
 		else:
 			self._table[key] = None
-		
+
+	def printHashtable(self):
+		print(self._table)
+		return
 
 if __name__ == "__main__":
 	h = HashTable()
+	h.insert((2,3))
+	h.printHashtable()
 
