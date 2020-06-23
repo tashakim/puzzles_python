@@ -16,7 +16,7 @@ class HashTable:
 			raise InvalidKeyException("Key is invalid. Try again.")
 
 	def __len__(self):
-		return #sum(len(sublist) for sublist in self._table)
+		return # sum(len(sublist) for sublist in self._table)
 
 	def __contains__(self, key):
 		i = self._index(key)
