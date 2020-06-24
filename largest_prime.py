@@ -9,5 +9,5 @@ def largest_prime_factor(n):
 
 
 if __name__ == "__main__":
-	print(largest_prime_factor(1000)) # 5
-	print(largest_prime_factor(7775460)) # 17
+	print(largest_prime_factor(1000)) #5
+	print(largest_prime_factor(7775460)) #17
