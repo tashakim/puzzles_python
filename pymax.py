@@ -1,4 +1,6 @@
 import time
+"""Search through the haystack
+"""
 
 n = int(input("Number of elements: "))
 haystack = [k for k in range(n)]
