@@ -13,9 +13,11 @@ def binary_search(L, x):
 	low = 0
 	high = len(L)-1
 	mid = (low+high)//2
+	
 	if(high >= low):
 		if(L[mid] == x):
 			return mid
+
 		elif(L[mid] > x):
 			return binary_search()
 
