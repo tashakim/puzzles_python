@@ -19,6 +19,7 @@ def binary_search(L, x):
 		elif(L[mid] > x):
 			return binary_search()
 
+""" Ignore below:
 
 def binary_searchIter(L,x):
 	low = 0
