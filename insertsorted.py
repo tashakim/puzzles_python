@@ -3,7 +3,7 @@ import time
 inserting item into sorted list.
 """
 
-def insertSorted(L, x): # fastest method
+def insertSorted(L, x): # Corrected: fastest.
 	for i in range(len(L)):
 		if(x <= L[i]):
 			L.insert(i, x)
@@ -11,16 +11,15 @@ def insertSorted(L, x): # fastest method
 	L.append(x)
 	return L
 
-def insertSorted2(L, x): # slowest method
+def insertSorted2(L, x): # fastest method: 0.0000057s
 	for item in L:
 		if(x <= item):
-			print("why are you here")
 			L.insert(L.index(item), x)
 			return L
 	L.append(x)
 	return L
 
-def insertSorted3(L, x): # 2nd fastest
+def insertSorted3(L, x): # 2nd fastest: 0.0000060s
 	for i, val in enumerate(L):
 		if(x <= val):
 			L.insert(i, x)
@@ -28,23 +27,27 @@ def insertSorted3(L, x): # 2nd fastest
 	L.append(x)
 	return L
 
+def insertSorted4(L, x): # 4th: 0.0000069s
+	L.insert([k for k in range(len(L)) if x > L[k]].pop()+1, x)
+	return L
+
+def insertSorted5(L,x): # 3rd: 0.0000060s Why is len() faster than pop()?
+	L.insert(len([k for k in range(len(L)) if x > L[k]]), x)
+	return L
+
 
 if __name__ == "__main__":
 	mylist = [20,37,58,72,91]
 	val = 100
 
-	ts = time.time()
-	print("Result is: ", insertSorted(mylist, val))
-	elapsed = time.time() - ts
-	print("The elapsed time for insertSorted is: %.7f" % elapsed)
-	mylist.pop()
-
-	ts = time.time()
-	print("Result is: ", insertSorted2(mylist, val))
-	elapsed = time.time() - ts
-	print("The elapsed time for insertSorted2 is: %.7f" % elapsed)
-
-	ts = time.time()
-	print(insertSorted3(mylist, val))
-	elapsed = time.time() - ts
-	print("The elapsed time for insertSorted3 is: %.7f" % elapsed)
+	tests = [insertSorted, insertSorted2, insertSorted3, insertSorted4, insertSorted5]
+	# First test runs way slower than the others. Due to various reasons.
+	# Change around the order of tests to see.
+	for i in range(5):
+		ts = time.time()
+		print("Result: ", tests[i](mylist, val))
+		elapsed = time.time() - ts
+		print("The elapsed time for insertedSort",i+1, "is: %.7f" % elapsed)
+		mylist.pop()
+	
+	print("All tests completed")
