@@ -19,7 +19,7 @@ def binary_search(L, x):
 			return mid
 
 		elif(L[mid] > x):
-			return binary_search() # saves space 
+			return binary_search() # saves space to not use array
 
 """ Ignore below:
 
