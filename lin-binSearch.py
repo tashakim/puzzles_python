@@ -6,30 +6,18 @@ def linear_search(L,x):
 		return count
 	else:
 		return -1
-"""
-def binary_search(L, x):
-	
-	low = 0
-	high = len(L) - 1
-	mid = (low + high)//2
 
-	if(high >= low):
-		if(L[mid] == x):
-			return mid
-
-		elif(L[mid] > x):
-			return binary_search() 
-
-		else(L[mid] < x):
-			return binary_search()
-"""
 def binary_search(arr, x): 
 	low = 0
 	high = len(arr)-1
+	print("binary search called on: \n", arr)
+	print("low = ", low, ", high = ", high, "\n")
 
 	if(high >= low):
 		mid = (high+low)//2
 		if(arr[mid] == x):
+			print("x found\n")
+			print("mid = ", mid)
 			return mid
 		elif(arr[mid] > x):
 			return binary_search(arr[:mid], x)
