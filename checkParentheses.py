@@ -36,7 +36,7 @@ def checkParantheses(s):
 			else:
 				if(S.pop() != match[c]):
 					return False
-	return True
+	return S.isEmpty()
 
 if __name__ == "__main__":
 	assert(checkParantheses("(a+b)") == True), "Wrong answer"
