@@ -1,4 +1,7 @@
 class ArrayStack:
+	"""Purpose: Simply python implementation of 
+	an array-based stack.
+	"""
 	def __init__(self):
 		self.data = []
 
@@ -17,7 +20,11 @@ class ArrayStack:
 	def size(self):
 		return len(self.data)
 
+
 def checkParantheses(s):
+	"""Purpose: checks that the input string 
+	has correct parenthesis expressions.
+	"""
 	match = {')':'(', ']':'[', '}':'{'}
 	S = ArrayStack()
 	for c in s:
@@ -32,6 +39,8 @@ def checkParantheses(s):
 	return True
 
 if __name__ == "__main__":
-	print(checkParantheses("(a+b)"))
-	print(checkParantheses("([)"))
-	print(checkParanthese("{)"))
+	assert(checkParantheses("(a+b)") == True), "Wrong answer"
+	assert(checkParantheses("([)") == False), "Wrong answer"
+	assert(checkParantheses("{)") == False), "Wrong answer"
+
+	print("All tests passed!")
