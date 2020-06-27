@@ -17,3 +17,8 @@ class LinkedListStack:
 
 	def peek(self):
 		return self.data.getAt(self.size().data)
+
+
+class DoublyLinkedList:
+	def __init__ (self):
+		
