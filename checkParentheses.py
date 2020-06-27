@@ -38,9 +38,11 @@ def checkParantheses(s):
 					return False
 	return S.isEmpty()
 
+
 if __name__ == "__main__":
 	assert(checkParantheses("(a+b)") == True), "Wrong answer"
 	assert(checkParantheses("([)") == False), "Wrong answer"
 	assert(checkParantheses("{)") == False), "Wrong answer"
+	assert(checkParantheses("[{(dfkjk)}]" == True), "Wrong answer"
 
 	print("All tests passed!")
