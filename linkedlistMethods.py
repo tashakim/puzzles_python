@@ -12,6 +12,35 @@ class LinkedList:
 		self._tail = None
 		self._count = 0
 
+	def insertAt(self, p, node):
+		if(p < 1 or p > self._count):
+			raise InvalidIndexException("Index is invalid.")
+		self.getTo(p-1)._next = node
+		node.next = self.getTo(p)
+
+	def popAt(self, pos):
+        if(pos < 1 or pos > self.nodeCount):
+            raise IndexError
+        target = self.getAt(pos)
+        if(self.nodeCount == 1): # single node Linked-list
+            self.head = None
+            self.tail = None
+        elif(pos == 1): # pop head node
+            self.head = self.getAt(pos +1)
+        else:
+            prev = self.getAt(pos -1)
+            
+            if(pos == self.nodeCount): # pop tail node
+                prev.next = None
+                self.tail = prev
+            else: # pop middle node
+                prev.next = self.getAt(pos+1)
+        self.nodeCount -=1
+        return target.data
+    
+
+	def concat(self, L):
+
 	def getTo(self, p):
 		if(p < 1 or p > self._count):
 			raise InvalidIndexException("Index is invalid.")
