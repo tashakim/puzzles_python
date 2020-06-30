@@ -8,3 +8,4 @@ script, first_arg, second_arg, third_arg = argv
 # print("Third arg: ", third_arg)
 
 print(script, first_arg, second_arg, third_arg)
+print("Script name: ", argv[0])
