@@ -9,4 +9,4 @@ print("The script name is: \n", script)
 
 print("Let's open file: \n", filename)
 txt = open(filename)
-print(txt.read())
+print("Contents: " , txt.read())
