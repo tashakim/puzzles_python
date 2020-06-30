@@ -9,4 +9,9 @@ print("The script name is: \n", script)
 
 print("Let's open file: \n", filename)
 txt = open(filename)
-print("Contents: " , txt.read())
+print("> Contents: " , txt.read())
+print()
+
+filename2 = input("Do you want to open another file?: ")
+txt = open(filename2)
+print("> Contents: ", txt.read())
