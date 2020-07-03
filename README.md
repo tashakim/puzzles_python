@@ -1,1 +1,1 @@
-# projects_python
+A collection of simple python programs & implementation of functions for practice.
