@@ -1,1 +1,1 @@
-A simple list of simple python programs written for practice.
+A simple list of python programs written for practice.
