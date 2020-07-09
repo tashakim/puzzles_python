@@ -9,7 +9,8 @@ class MinStack:
         self.size = 0
 
     def push(self, x: int) -> None:
-        """Purpose:
+        """Purpose: Pushes item onto stack. 
+        Required complexity: O(1).
         """
         if(x < self.currMin):
             self.currMin = x
@@ -17,7 +18,7 @@ class MinStack:
         self.size += 1
 
     def pop(self) -> None:
-        """Purpose: Removes but does not rerturn top item from stack.
+        """Purpose: Removes but does not return top item from stack.
         Required Complexity: O(1).
         """
         if(self.size > 0):
