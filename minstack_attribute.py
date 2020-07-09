@@ -2,7 +2,7 @@ class MinStack:
 
     def __init__(self):
         """
-        initialize your data structure here.
+        Initializes the data structure here.
         """
         self.stack = []
         self.currMin = float('inf')
@@ -18,9 +18,11 @@ class MinStack:
         if(self.size > 0):
             self.stack.pop(-1)
             self.size -=1
+        # reset currMin when stack is Empty.
         if(self.size == 0):
             self.currMin = float('inf')
         else:
+            # reset currMin when item is popped from stack. 
             self.currMin = self.stack[-1][1]
         
 
