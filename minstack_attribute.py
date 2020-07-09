@@ -9,12 +9,17 @@ class MinStack:
         self.size = 0
 
     def push(self, x: int) -> None:
+        """Purpose:
+        """
         if(x < self.currMin):
             self.currMin = x
         self.stack.append([x, self.currMin])
         self.size += 1
 
     def pop(self) -> None:
+        """Purpose: Removes but does not rerturn top item from stack.
+        Required Complexity: O(1).
+        """
         if(self.size > 0):
             self.stack.pop(-1)
             self.size -=1
@@ -24,15 +29,20 @@ class MinStack:
         else:
             # reset currMin when item is popped from stack. 
             self.currMin = self.stack[-1][1]
-        
 
     def top(self) -> int:
+        """Purpose: Returns top item in stack, without removing it.
+        Required Complexity: O(1).
+        """
         if(self.size >0):
             return self.stack[-1][0]
         else:
             return -1
 
     def getMin(self) -> int:
+        """Purpose: Returns minimum item in stack.
+        required Complexity: O(1).
+        """
         if(self.size > 0):
             return self.stack[-1][1]
         else:
