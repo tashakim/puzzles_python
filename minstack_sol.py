@@ -60,6 +60,7 @@ class Minstack_tracker:
 			self.minstack.append([x,1])
 		elif(x == self.minstack[-1][0]):
 			self.minstack[-1][1] += 1
+			
 	def pop(self) -> None:
 		if(self.minstack[-1][0] == self.stack[-1]):
 			self.minstack[-1][1] -= 1
