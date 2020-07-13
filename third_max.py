@@ -4,7 +4,7 @@ class Solution:
         self.second = float('-inf')
         self.third = float('-inf')
     
-    def thirdMax(self, nums: List[int]) -> int:
+    def thirdMax(self, nums):
         nums = list(set(nums))
         for item in nums:
             if item > self.max:
@@ -29,3 +29,7 @@ class Solution:
             return self.third
         else:
             return self.max
+
+if __name__ == "__main__":
+    s = Solution()
+    assert(s.thirdMax([3,3,3]) == 3), "Wrong answer"
