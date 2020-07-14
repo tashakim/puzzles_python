@@ -1,9 +1,17 @@
 import heapq
 
+"""Purpose: Create a min-heap and max-heap using the 
+built-in heapq module in python3.
+"""
+
 myheap = []
 mylist = [1,5,0,10,25,6,70,9,12]
+
+# Pushing keys into heap:
 for x in mylist:
 	heapq.heappush(myheap, x) # Create min-heap
+
+# Popping root of heap:
 print("Popped root :", heapq.heappop(myheap)) # Pop min item in heap
 print(myheap) # Resulting min-heap
 
