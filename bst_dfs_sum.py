@@ -23,3 +23,17 @@ class Solution:
             if x >= L and x <= R:
                 sum += x
         return sum
+
+    def better_rangeSum(self, root: TreeNode, L: int, R: int)-> int:
+        # integrate sum into DFS
+        order, visited, sum = [], [], 0
+        visited.append(root)
+        while(visited):
+            popped = visited.pop()
+            if popped.val >= L and popped.val <= R:
+                sum += popped.val
+            if popped.left:
+                visited.append(popped.left)
+            if popped.right:
+                visited.append(popped.right)
+        return sum
