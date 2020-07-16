@@ -5,6 +5,8 @@ class Node:
 		self.right = None
 
 def sizeOfTree(node):
+	"""Purpose: Recursively computes the size of a tree.
+	"""
 	if node:
 		return sizeOfTree(node.left) + sizeOfTree(node.right) + 1
 	else:
@@ -17,4 +19,4 @@ if __name__ == "__main__":
 	root.left.left = Node(4)
 	root.right.right = Node(5)
 
-	print(sizeOfTree(root))
+	print(sizeOfTree(root)) # 5
