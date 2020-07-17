@@ -45,12 +45,12 @@ class Solution:
 
     def maxSubArray5(self, nums: List[int]) -> int:
         curr_ = -float('inf')
-        max_ = -float('inf')
+        max_sum = -float('inf')
         for num in nums:
             if curr_ < 0:
                 curr_ = num
             else:
                 curr_ += num
-            max_ = max(max_, curr_)
-        return max_        
+            max_sum = max(max_sum, curr_)
+        return max_sum        
 
