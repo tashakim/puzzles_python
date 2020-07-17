@@ -15,13 +15,11 @@ class Solution:
         
         return max(sums)
 
-
     def maxSubArray2(self, nums: List[int]) -> int:
         for i in range(1,len(nums)):
             if nums[i-1] > 0:
                 nums[i] += nums[i-1]
         return max(nums)
-
 
     def maxSubArray3(self, nums: List[int]) -> int:
         current_sum = nums[0]
@@ -32,7 +30,6 @@ class Solution:
             current_sum = max(current_sum + nums[i], nums[i])
             max_sum = max(current_sum, max_sum)
         return max_sum
-    
 
     def maxSubArray4(self, nums: List[int]) -> int:
         max_sum = float('-inf')
@@ -41,7 +38,6 @@ class Solution:
             curMax = max(nums[i], curMax + nums[i])
             max_sum = max(curMax,max_sum)
         return max_sum
-
 
     def maxSubArray5(self, nums: List[int]) -> int:
         curr_ = -float('inf')
@@ -54,3 +50,5 @@ class Solution:
             max_sum = max(max_sum, curr_)
         return max_sum        
 
+if __name__ == "__main__":
+	s = Solution()
