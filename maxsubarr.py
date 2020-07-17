@@ -35,12 +35,12 @@ class Solution:
     
 
     def maxSubArray4(self, nums: List[int]) -> int:
-        myMax = float('-inf')
+        max_sum = float('-inf')
         curMax = 0
         for i in range(len(nums)):
             curMax = max(nums[i], curMax + nums[i])
-            myMax = max(curMax,myMax)
-        return myMax
+            max_sum = max(curMax,max_sum)
+        return max_sum
 
 
     def maxSubArray5(self, nums: List[int]) -> int:
