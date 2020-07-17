@@ -52,3 +52,4 @@ class Solution:
 
 if __name__ == "__main__":
 	s = Solution()
+	s.maxSubArray([1,4,5,1,-3,-5,0,4,-3])
