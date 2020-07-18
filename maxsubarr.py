@@ -50,6 +50,7 @@ class Solution:
             max_sum = max(max_sum, curr_)
         return max_sum        
 
+
 if __name__ == "__main__":
 	s = Solution()
 	s.maxSubArray([1,4,5,1,-3,-5,0,4,-3])
