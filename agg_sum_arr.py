@@ -3,6 +3,7 @@ import timeit
 class Solution:
     def runningSum(self, nums):
         """Purpose: Computes aggregate sum of array 'nums'.
+        T.C: O(n), S.C: O(n)
         """
         sums = 0
         l = []
@@ -21,6 +22,9 @@ class Solution:
             i += 1
         return nums
 
+    def runningSum3(self, nums):
+        """Python one-liner"""
+        return [sum(nums[:i]) for i in range(len(nums))]
 
 if __name__ == "__main__":
     setup = '''
