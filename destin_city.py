@@ -1,4 +1,7 @@
 class Solution:
+    """Purpose: Returns the destination city, from a 
+    list of paths from city A to city B.
+    """
     def destCity0(self, paths: List[List[str]]) -> str:
         mydict = {}
         for p in paths:
