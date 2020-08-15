@@ -1,6 +1,6 @@
 def hasPathSum(root, sum):
-	"""Purpose: Recursively cecks if a binary tree has a root-to-leaf path 
-	that adds up to sum.
+	"""Purpose: Checks if a binary tree has a root-to-leaf path that 
+	adds up to sum.
 	"""
 	if not root: return False
 	sum -= root
@@ -9,7 +9,6 @@ def hasPathSum(root, sum):
 		return sum == 0
 
 	return hasPathSum(root.left, sum) or hasPathSum(root.right, sum)
-
 
 
 if __name__ == "__main__":
