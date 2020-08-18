@@ -4,7 +4,7 @@ class Solution:
         by buying and selling stock, at most once.
 
         Note: Scans graph from left to right, updating global max and min.
-        
+
         """
         lowest = float('inf')
         highest = float('-inf')
@@ -20,3 +20,15 @@ class Solution:
                     if highest - lowest > profit:
                         profit = highest - lowest
         return profit
+
+
+    def maxProfit(self, prices: List[int]) -> int:
+        """Updated solver.
+        """
+        max_profit, min_price = 0, float('inf')
+        for x in prices:
+            min_price = min(min_price, x) # ensures min price is BEFORE x
+            profit = x - min_price
+            max_profit = max(max_profit, profit) # calculates largest profit
+            
+        return max_profit
