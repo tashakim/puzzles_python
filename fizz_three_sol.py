@@ -28,3 +28,17 @@ class Solution:
                 res += str(i)
             ans.append(res)
         return ans
+
+
+    def fizzBuzz(self, n: int) -> List[str]:
+        mydict = {3: "Fizz", 5: "Buzz"}
+        res = []
+        for i in range(1, n+1):
+            mystr = ""
+            for k, v in mydict.items():
+                if i%k == 0:
+                    mystr += v
+            if mystr == "": mystr = str(i)
+            res.append(mystr)
+        return res
+                    
