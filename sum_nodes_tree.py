@@ -4,16 +4,28 @@ class Node:
 		self.left = None
 		self.right = None
 
+class Traverse:
+	def countNodes(self, root):
+		self.count = 0
 
-def preorder(root):
-	# Traverses binary tree via depth-first traversal, starting at root.
+		def preorder(root):
+			# Traverses binary tree via depth-first traversal, starting at root.
+			print("call preorder")
+			decorate(root) # decorate node here 
 
-	print(root.val) # decorate node here 
-	
-	if root.left:
-		preorder(root.left)
-	if root.right:
-		preorder(root.right)
+			if root.left:
+				preorder(root.left)
+			if root.right:
+				preorder(root.right)
+
+		def decorate(root):
+			# Purpose: count increases for each node.
+			print(root.val, " has been visited.")
+			self.count += 1
+			return 
+
+		preorder(root)
+		return self.count
 
 
 if __name__ == "__main__":
@@ -24,4 +36,7 @@ if __name__ == "__main__":
 	root.left.right = Node(4)
 	root.right.left = Node(5)
 
-	preorder(root)
+	t = Traverse()
+	
+	print("Result: ", t.countNodes(root))
+	
