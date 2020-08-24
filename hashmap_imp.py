@@ -1,34 +1,71 @@
+class ListNode:
+    """Purpose: Chaining in hashmap.
+    """
+    def __init__(self, k, v):
+        self.pair(k, v)
+        self.next = None
+
 class MyHashMap:
 
     def __init__(self):
         """
         Initializes the data structure.
         """
-        self.data = {}
+        self.capacity = 1000
+        self.data = [None]*self.capcity
 
-    def put(self, key: int, value: int) -> None:
+
+    def insert(self, k: int, v: int) -> None:
         """
         value will always be non-negative.
         """
-        self.data[key] = value
+        i = k % self.capacity
+        if not self.data[i]:
+            self.data[i] = ListNode(k, v)
+        else:
+            cur = self.data[i]
+            while True:
+                if cur.pair[0] == k:
+                    cur.pair = (k, v)
+                    return
+                if not cur.next:
+                    break
+                cur = cur.next
+            cur.next = ListNode(k, v)
         
 
-    def get(self, key: int) -> int:
+    def get(self, k: int) -> int:
         """
         Returns the value to which the specified key is mapped, or -1 if this map contains no mapping for the key
         """
-        return self.data.get(key, -1)
+        i = k % self.capacity
+        cur = self.data[i]
+        while cur:
+            if cur.pair[0] == k:
+                return cur.pair[1]
+            else:
+                cur = cur.next
+        return -1
         
 
-    def remove(self, key: int) -> None:
+    def delete(self, key: int) -> None:
         """
         Removes the mapping of the specified value key if this map contains a mapping for the key
         """
-        if key in self.data:
-            self.data.pop(key)
+        i = k % self.capacity
+        cur = pre = self.data[i]
+        if not cur:
+            return
+        if cur.pair[0] == k:
+            self.data[i] = cur.next
         else:
-            return -1
-
+            cur = cur.next
+            while cur:
+                if cur.pair[0] == k:
+                    pre.next = cur.next
+                    break
+                else:
+                    cur, pre = cur.next, pre.next
 
 # The MyHashMap object is instantiated and called as such:
 # obj = MyHashMap()
