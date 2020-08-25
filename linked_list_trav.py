@@ -28,3 +28,4 @@ if __name__ == "__main__":
 	l1 = LinkedList()
 	l1.insert(n)
 	print(l1)
+	print(l1.head.val)
