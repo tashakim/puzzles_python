@@ -21,11 +21,6 @@ class Solution:
             if popped.right:
                 visited.append(popped.right)
         print(order)
-        res = []
-        i,j, k = 0, 0,0
-        while i < len(order):
-            j = i
-            i = 2**k
-            print(order[j:j+i])
-            k += 1
-        return res
+        # BFs order printed.
+
+        # print grouped by level here:
