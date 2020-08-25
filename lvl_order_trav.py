@@ -23,5 +23,9 @@ class Solution:
         # BFs order printed.
 
         # print grouped by level here:
+        return
 
-        
+
+if __name__ == "__main__":
+    s = Solution()
+    s.levelOrder([3, 9, 10, None, None, 15, 7]) 
