@@ -15,7 +15,16 @@ class LinkedList:
 		else:
 			self.tail = node
 			self.tail.next = None
-
+	"""
 	def delete(self, node):
 
 	def 
+	"""
+if __name__ == "__main__":
+	n = Node(0)
+	print(n.val)
+	print(n.next)
+
+	l1 = LinkedList()
+	l1.insert(n)
+	print(l1)
