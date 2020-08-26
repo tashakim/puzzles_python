@@ -57,3 +57,9 @@ class Solution:
             return max(left, right)
         else:
             return min(left, right)
+
+if __nam__ == "__main__":
+	assert(maxDistToClosest([1,0,0,0,1,0,1]) == 2), "Wrong output"
+	assert(maxDistToClosest([1,0,0,0]) == 3), "Wrong output"
+
+	print("All tests passed!")
