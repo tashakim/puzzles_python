@@ -33,7 +33,7 @@ class Solution:
         return k
 
 
-     def maxDistToClosest(self, seats):
+     def maxDistToClosest0(self, seats):
         """Purpose: Simplified version using helper methods within class.
         """
         dp = [0]*len(seats)
