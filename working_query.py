@@ -17,3 +17,15 @@ class Solution:
                 res.append(i)
                 
         return len(res)
+
+    def busyStudent(self, startTime, endTime, queryTime):
+        """Purpose: Reduces space complexity of above solution, by keeping track of
+        only the number of potential students - and looping through two arrays 
+        simultaneously.
+
+        """
+        potential, num = [], 0
+        for i, x in enumerate(startTime):
+            if x <= queryTime and endTime[i] >= queryTime:
+                num += 1
+        return num
