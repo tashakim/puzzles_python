@@ -11,7 +11,8 @@ class Solution:
                 return [i, my_hash[nums[i]]]
 
     def twoSum(self, nums, target):
-    """Purpose: Two pointers
+    """Purpose: Two pointers solution 
+    Note: Assumption is made, that the input array is sorted.
     """
         p1, p2 = 0, len(nums)-1
         while p1 < p2:
