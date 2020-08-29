@@ -9,8 +9,8 @@ class Solution:
     """Purpose: Searches binary tree for input value.
     If value does not exist, return empty list.
 
-    Time complexity:
-    Space complexity:
+    Time complexity: O(n)
+    Space complexity: O()
     """
         visited, order = [root], []
         while visited:
