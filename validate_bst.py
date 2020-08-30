@@ -4,23 +4,8 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
-class Solution:
-    def isValidBST(self, root: TreeNode) -> bool:
-        def helper(root, low = float('-inf'), high = float('inf')):
-            if not root: return True
-            
-            if root.val <= low or root.val >= high:
-                return False
-            
-            if not helper(root.left, low, root.val):
-                return False
-            if not helper(root.right, root.val, high):
-                return False
-            return True
-        
-        return helper(root)
-
-
+class Try:
+    
     def isValidBST(self, root: TreeNode) -> bool:
         def helper(root, low = float('-inf'), high = float('inf')):
             if not root: 
