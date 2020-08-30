@@ -9,6 +9,7 @@ class Solution:
                 my_hash[k] = i
             else:
                 return [i, my_hash[nums[i]]]
+                
 
     def twoSum(self, nums, target):
     """Purpose: Two pointers solution 
