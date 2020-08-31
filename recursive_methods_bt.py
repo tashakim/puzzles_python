@@ -72,3 +72,17 @@ class TreeShape:
             return True
         return dfs(root.left, root.right)
 
+class Other:
+    def lowestCommonAncestor(self, root, p, q):
+        """Purpose: Returns the lowest common ancestor node aka - the 'splitting' node.
+        """
+        # If both p and q are greater than parent
+        if p.val > root.val and q.val > root.val:    
+            return self.lowestCommonAncestor(root.right, p, q)
+        # If both p and q are lesser than parent
+        elif p.val < root.val and q.val < root.val:    
+            return self.lowestCommonAncestor(root.left, p, q)
+        
+        # We have found the lowest-common point, i.e. the 'splitting' node.
+        return root
+
