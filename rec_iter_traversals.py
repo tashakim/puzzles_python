@@ -20,13 +20,12 @@ class Traversals:
 		return res
 
 
-
 	def preorder_iterative(self, root):
 		visited, order = [root], []
 		while visited:
 			popped = visited.pop()
 			# decorate root
-			if popped:
+			if popped: # condition here can be ommitted
 				order.append(popped.val)
 			if popped.right:
 				visited.append(popped.right)
@@ -35,12 +34,12 @@ class Traversals:
 		return order
 
 
-
 	def breadth_first(self, root):
 		visited, order = [root], []
 		while visited:
 			popped = visited.pop(0)
-			order.append(popped.val)
+			if popped: # condition here can be ommitted
+				order.append(popped.val)
 			if popped.left:
 				visited.append(popped.left)
 			if popped.right:
