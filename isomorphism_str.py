@@ -6,9 +6,9 @@ class Isomorphism:
 		"""
 		unique_chars_in_pattern = len(set(pattern))
 		unique_words_in_strings = len(set(strings.split(" ")))
-		unique_pairs = len(set(zip(pattern, strings.aplit(" "))))		
+		unique_pairs = len(set(zip(pattern, strings.split(" "))))		
 		return unique_chars_in_pattern == unique_words_in_strings == unique_pairs
-		
+
 
 	def stringPattern(self, p, q):
 		"""Purpose: Return whether or not the characters
