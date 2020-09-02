@@ -1,36 +1,49 @@
 # iteratively
 def preorderTraversal(self, root):
-    stack, res = [root], []
-    while stack:
-        node = stack.pop()
-        if node:
-            res.append(node.val)
-            stack.append(node.right)
-            stack.append(node.left)
+    visited, order = [root], []
+    while visited:
+        p = visited.pop()
+        order.append(p.val)
+        if p.right:
+            visited.append(p.right)
+        if p.left:    
+            visited.append(p.left)
     return res
-
-# iteratively       
-def inorderTraversal(self, root):
-    res, stack = [], []
-    while True:
-        while root:
-            stack.append(root)
-            root = root.left
-        if not stack:
-            return res
-        node = stack.pop()
-        res.append(node.val)
-        root = node.right   
 
 # iteratively        
 def postorderTraversal(self, root):
-    res, stack = [], [root]
-    while stack:
-        node = stack.pop()
-        if node:
-            res.append(node.val)
-            stack.append(node.left)
-            stack.append(node.right)
-    return res[::-1]
+    visited, order = [root], []
+    while visited:
+        p = visited.pop()
+        order.append(p.val)
+        if p.left:
+	        visited.append(p.left)
+    	if p.right:
+        visited.append(p.right)
+    return order[::-1]
 
 
+def bfs(self, root):
+	visited, order = [root], []
+	while visited:
+		p = visited.pop(0)
+		order.append(p.val)
+		if p.left:	
+			visited.append(p.left)
+		if p.right:	
+			visited.append(p.right)
+	return order
+
+
+# iteratively       
+def inorderTraversal(self, root):
+    visited, order = [], []
+    while True:
+        while root:
+            visited.append(root)
+            root = root.left
+        if not visited:
+            return order
+        node = visited.pop()
+        order.append(node.val)
+        root = node.right   
