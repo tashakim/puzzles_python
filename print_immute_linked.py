@@ -7,6 +7,8 @@
 #     def getNext(self) -> 'ImmutableListNode': # return the next node.
 
 class Solution:
+	"""An interface of immutable linked list.
+	"""
     def printLinkedListInReverse(self, head: 'ImmutableListNode') -> None:
         if not head:
             return None
