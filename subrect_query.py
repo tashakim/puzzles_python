@@ -1,5 +1,10 @@
 class SubrectangleQueries:
-    
+    """Purpose: This class receives an array of integers [rows, x, cols] 
+    and supports two methods that (1) updates all values with 'newValue'
+    in the subrectangle with upper left coord (row1, col1) and bottom right 
+    coord (row2, col2).
+    (2) Returns the current value of (row, col) in the rectangle.
+    """
     def __init__(self, rectangle: List[List[int]]):
         self.data = {}
         for j in range(len(rectangle[0])):
