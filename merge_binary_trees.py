@@ -6,6 +6,9 @@
 #         self.right = right
 class Solution:
     def mergeTrees(self, t1: TreeNode, t2: TreeNode) -> TreeNode:
+    	"""Purpose: Returns a new binary tree that merges the values
+    	at nodes in two separate input binary trees, t1 and t2.
+    	"""
         if t1 and t2:
             root = TreeNode(t1.val + t2.val)
             root.left = self.mergeTrees(t1.left, t2.left)
