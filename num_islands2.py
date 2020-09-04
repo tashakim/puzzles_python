@@ -2,6 +2,7 @@ class Solution:
     def numIslands(self, grid):
     """Purpose: Count the number of separated units in a 
     graph filled with '1's and '0's.
+
     """
         def dfs(i, j):
             if i < 0 or i >= m or j < 0 or j >= n or grid[i][j] == '0' or visited[i][j]:
@@ -12,9 +13,6 @@ class Solution:
             dfs(i, j + 1)
             dfs(i, j - 1)
 
-        count = 0
-        if not grid: 
-            return count
         m, n = len(grid), len(grid[0])
         visited = [[False for j in range(n)] for i in range(m)]
 
