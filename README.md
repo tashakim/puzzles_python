@@ -1,1 +1,1 @@
-A cute collection of puzzles solved in python3
+A collection of puzzles solved in python3
