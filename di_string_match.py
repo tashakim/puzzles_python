@@ -18,4 +18,8 @@ class Solution(object):
         res.append(lo)
         return res
 
-        
+if __name__ == '__main__':
+    s = Solution()
+    print(s.diStringMatch("IDID"))
+    print(s.diStringMatch("III"))
+    print(s.diStringMatch("DDI"))
