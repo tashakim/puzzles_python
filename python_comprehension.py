@@ -19,3 +19,21 @@ print(check_sorted([1,3,5,6,8,100])) # True
 print(check_sorted([3,5,6,8,1,100])) # False
 
 print("Check!")
+
+
+def filterDupe():
+	# Create a hashtable to perform a filter for duplicates
+	items = ["apple", "pear", "orange", "banana", "apple",
+	         "orange", "apple", "pear", "banana", "orange",
+	         "apple", "kiwi", "pear", "apple", "orange"]
+
+	filter = {}
+
+	for item in items:
+		filter.setdefault(item, int)
+
+	print("My filter: ", filter)
+	return len(items) == len(filter)
+
+
+print(filterDupe()) # False
