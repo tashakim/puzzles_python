@@ -46,6 +46,23 @@ class Recursion:
 
 		return self.findItem(data[:-1], item)
 
+### Cool!
+	def findMax(self, data):
+		"""Purpose: Computes maximum value in input array recursively.
+		"""
+
+		# Breaking condition
+		if len(data) == 1:
+			return data.pop()
+
+		op1 = data[0]
+		op2 = self.findMax(data[1:])
+		
+		if op1 > op2:
+			return op1
+		else:
+			return op2
+
 
 if __name__ == "__main__":
 	r = Recursion()
@@ -53,5 +70,6 @@ if __name__ == "__main__":
 	assert(r.fibonacci(5) == 5), "Wrong value"
 	assert(r.fibonacci(6) == 8), "Wrong value"
 	assert(r.findItem([1,2,3,4], 5) == False), "Wrong value"
+	r.findMax([1,2,3,4,6,4,2,9,1,3,8])
 
 	print("Tests passed!")
