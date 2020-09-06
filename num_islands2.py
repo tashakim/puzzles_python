@@ -13,9 +13,6 @@ class Solution:
             dfs(i, j + 1)
             dfs(i, j - 1)
 
-        if not grid: 
-            return 0
-        count = 0    
         m, n = len(grid), len(grid[0])
         visited = [[False for j in range(n)] for i in range(m)]
 
@@ -24,5 +21,4 @@ class Solution:
                 if not visited[i][j] and grid[i][j] == '1':
                     dfs(i, j)
                     count += 1
-
         return count
