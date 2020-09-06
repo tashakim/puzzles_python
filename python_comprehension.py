@@ -1,3 +1,5 @@
+import collections
+
 def check_sorted(data):
 	"""Purpose: Brute force sorts items in input data.
 	Time complexity: O(n)
@@ -21,7 +23,7 @@ print(check_sorted([3,5,6,8,1,100])) # False
 print("Check!")
 
 
-def filterDupe():
+def filter_dupe():
 	# Create a hashtable to perform a filter for duplicates
 	items = ["apple", "pear", "orange", "banana", "apple",
 	         "orange", "apple", "pear", "banana", "orange",
@@ -36,4 +38,20 @@ def filterDupe():
 	return len(items) == len(filter)
 
 
-print(filterDupe()) # False
+print(filter_dupe()) # False
+
+
+def dupe_value_counter():
+	items = ["apple", "pear", "orange", "banana", "apple",
+	         "orange", "apple", "pear", "banana", "orange",
+	         "apple", "kiwi", "pear", "apple", "orange"]
+
+	filter = collections.Counter(items)
+	print("Checking for duplicates... ")
+
+	for k, v in filter.items():
+		if v > 1:
+			print(k, end=", ")
+	print("[Complete]")
+
+dupe_value_counter()
