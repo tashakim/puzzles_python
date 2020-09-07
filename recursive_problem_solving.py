@@ -49,6 +49,7 @@ class Recursion:
 ### Cool!
 	def findMax(self, data):
 		"""Purpose: Computes maximum value in input array recursively.
+		Time complexity: O(n)
 		"""
 
 		# Breaking condition
