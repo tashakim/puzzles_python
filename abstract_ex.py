@@ -23,6 +23,7 @@ class TerminalExpression(AbstractExpression):
 
 def main():
 	ast = NonterminalExpression(NonterminalExpression(TerminalExpression()))
+	ast.interpret()
 
 if __name__ == "__main__":
 	main()
