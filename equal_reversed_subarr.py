@@ -6,6 +6,7 @@ class Solution:
     	number of steps.
     	Return boolean indicating whether arr equals to target.
 
+    	Example: target=[1,2,3,4], arr=[2,4,1,3] => True
     	
     	"""
         return collections.Counter(target) == collections.Counter(arr)
