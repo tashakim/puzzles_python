@@ -13,4 +13,5 @@ class Solution:
         return collections.Counter(target) == collections.Counter(arr)
 
 
-        
+    def canBeEqual(self, target):
+    	return sorted(target) == sorted(arr) # note target.sort(), arr.sort() does not work.
