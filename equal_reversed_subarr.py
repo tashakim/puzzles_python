@@ -7,6 +7,10 @@ class Solution:
     	Return boolean indicating whether arr equals to target.
 
     	Example: target=[1,2,3,4], arr=[2,4,1,3] => True
-    	
+    	Example: target=[3,7,9], arr=[3,7,11]
+
     	"""
         return collections.Counter(target) == collections.Counter(arr)
+
+
+        
