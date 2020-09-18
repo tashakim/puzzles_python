@@ -1,4 +1,6 @@
 def alternatingSort(a):
+    """Purpose: Returns a sorted array merged with a special rule.
+    """
     cur, prev = 0, float('-inf')
     for i in range(len(a)):
         print("i = ", i)
