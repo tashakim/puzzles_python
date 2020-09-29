@@ -1,54 +1,49 @@
 from FixedSizeArray import FixedSizeArray
 import pytest
 
-# 3. Review DynamicArray so that you understand how it should operate, add docstrings to each pre-coded method
 # 4. Use Test-First Design  thinking to write test cases for each TODO item 
 #    a. Work incrementally and start with methods that don’t depend on other methods
 #    b. After you write your tests for a method, implement it, and run it
 #    c. Debug failing tests and methods as you go
 #
 # __Tips:__
-# - Remember to adjust the array length and 
-# capacity as needed. 
-# - Create helper methods when necessary (there is 
-# at least one obvious one if you utilize 
-# the DRY Principle; see 
-# https://en.wikipedia.org/wiki/Don%27t_repeat_yourself
+# - Create helper methods when necessary
 
 class DynamicArray:
     """
     This DynamicArray class provides set, get, append, insert, pop methods.  Data is stored internally 
     using a `FixedSizeArray` which is resized as needed. 
-
-    TODO: Implement the requested methods and design tests for each.  Use the `FixedSizeArray` class 
-    to allocate the necessary memory.
-    
-    HINT: Do not inherit 'FixedSizeArray'. 
     """
-    MIN_CAPACITY = 4
-
     def __init__(self):
         """
-        Returns an empty DynamicArray.
+        Purpose: Initializes an empty DynamicArray.
+
+        Time Complexity: Average O(1), Worst-case O(1)
         """
-        self._fixed_array = FixedSizeArray(self.MIN_CAPACITY)
+        self._capacity = 4
+        self._fixed_array = FixedSizeArray(self._capacity) # create new fixed-size array
         self._length = 0
+        self._head = 0
         
     def __len__(self):
         return self._length
     
+
     def capacity(self):
         """
-        Purpose: Returns the current capacity of the array
-        Time Complexity: O(n)
+        Purpose: Returns the current capacity of the array.
+
+        Time Complexity: Average O(1), Worst-case O(1)
         """
-        return len(self._fixed_array)
+        return self._capacity
     
+
     def get(self, p):
         """
-        Purpose: Returns the element at position `p`. `p` should be in range [0,len(self)]
+        Purpose: Returns the element at position `p`. 
+        Note: Raises IndexError when p is not in index range of array.
 
-        Time Complexity: 
+        Time Complexity: Average O(1), Worst-case O(1)
         """
         if p < 0 or p >= self._length:
             raise IndexError(
@@ -57,11 +52,13 @@ class DynamicArray:
         
         return self._fixed_array.get(p)
 
+
     def set(self, p, x):
         """
-        Purpose: 
+        Purpose: Sets the element at position 'p' to 'x'.
+        Note: Raises IndexError when p is not in index range of array.
 
-        Time Complexity: O(1)
+        Time Complexity: Average O(1), Worst-case O(1)
         """
         if p < 0 or p >= self._length:
             raise IndexError(
@@ -69,80 +66,274 @@ class DynamicArray:
                 'index {}'.format(self._length, p))
         self._fixed_array.set(p, x)
 
+
     def append(self, x):
         """ 
         Purpose: Adds an item to the end of the current array. 
+        Note: When append is called on a full-capacity array, resizes itself to 
+        double capacity and adds item x.
+
+        Time Complexity: Average O(1) / Worst-case: O(n), when array needs to be resized.
         """
-        # TODO: Implement me! Remember to update length and capacity as needed.
-        if self.capacity() > self._length:
-            self.set(self._length-1, x)
+        # If array is not full, simply append item
+        if self._length < self._capacity:
+            self._fixed_array.set(self._head, x)
+            self._head += 1
             self._length += 1
+        # If array is full, move items into a new FixedArray with double capacity.
         else:
-            new_array = FixedSizeArray(self._length*2)
-            self._length = 0
+            # First, create a new Fixed Array with double capacity
+            self._capacity *= 2 # update capacity
+            temp_array = FixedSizeArray(self._capacity)
+            
+            # Copy original elements into this array
             for i in range(self._length):
-                new_array[i] = self._fixed_array[i]
-                self._length += 1
-            new_array[self._length] = x
-            self._fixed_array = new_array
-        return 
+                temp_array.set(i, self._fixed_array.get(i))
+            
+            temp_array.set(self._head, x) # append x to the end
+            self._head += 1
+            self._length += 1
+
+            self._fixed_array = temp_array
+
 
     def insert(self, i, x):
         """
-        Insert an item `x` before position `i` of self.   
-        Requires 0 <= i <= len(self), otherwise, `IndexError` is raised.
-        """
-        # TODO: Implement me! Remember to update length and capacity as needed.
-        pass
+        Purpose: Insert an item `x` before position `i` of self.   
+        Note: Raises IndexError when NOT 0 <= i <= len(self).
 
-    def pop(self, i=None):
+        Time Complexity: Average O(n), Worst-case O(n), where n is the length of array.
         """
-        Remove the item at position `i` of self, and return
-        it. a.pop() removes and returns the last item in self. 
-        Requires 0 <= i < len(self), otherwise, `IndexError` is raised.
+        insert_index = i
+        if not 0 <= i or not i <= self._length:
+            raise IndexError('Index is out of range')
+        # If array is full, move items into a new FixedArray with double capacity.
+        if self._length >= self._capacity:
+            self._capacity *= 2
+            temp_array = FixedSizeArray(self._capacity)
+
+            for i in range(self._length):
+                temp_array.set(i, self._fixed_array.get(i))
+            self._fixed_array = temp_array
+
+        for k in range(self._length, insert_index, -1):
+            self._fixed_array.set(k, self._fixed_array.get(k-1))
+
+        self._fixed_array.set(insert_index, x)
+        self._head += 1
+        self._length += 1
+
+
+    def pop(self, i=float('inf')):
         """
-        # TODO: Implement me! Remember to update length and capacity as needed.
+        Remove the item at position `i` of self, and returns it. 
+        Note: a.pop() removes and returns the last item in self. 
+        Note: Raises IndexError if NOT 0 <= i < len(self).
         
+        Time Complexity: 
+        pop(): Average O(1), Worst-case O(n), where n is length of array.
+        pop(i): Average O(n), Worst-case O(n), where n is length of array.
+        """
+        # If array is empty, raise error
+        if self._length == 0:
+            raise IndexError('Array is empty. Cannot pop from array.')
+        
+        if i == float('inf'):
+            i = self._length -1
+
+        popped = self._fixed_array.get(i)
+
+        for k in range(i+1, self._length):
+            self._fixed_array.set(k-1, self._fixed_array.get(k))
+        
+        self._length -= 1
+        self._fixed_array.set(self._head-1, None)
+        self._head -= 1
+
+        # If length is less than capcity/4, resize array.
+        if self._length < self._capacity/4:
+            self._capacity //= 2
+            temp_array = FixedSizeArray(self._capacity)
+
+            for i in range(self._length):
+                temp_array.set(i, self._fixed_array.get(i))
+            self._fixed_array = temp_array
+
+        return popped
+
 
     def reverse(self):
         """
-        Reverse the elements of the self, in place.
-        Time Complexity: O(n)
+        Reverse the elements of the self, in-place.
+
+        Time Complexity: Average O(n), Worst-case O(n), where n is the length of the array.
         """
-        return self._fixed_array.reverse()
+        pivot = self._length//2
+        start, end = 0, self._length -1 
+        while start <= end:
+            temp = self._fixed_array.get(start)
+            self._fixed_array.set(start, self._fixed_array.get(end))
+            self._fixed_array.set(end, temp)
+            start += 1
+            end -= 1
+
+        return self._fixed_array
+
 
     def __str__(self):
         return f'DynamicArray: capacity={len(self._fixed_array)}, length={self._length}; Internal {self._fixed_array}; '
 
 
-
-## Testing 
-# Below are three example test cases
-
+################ Testing #################### 
 def assert_dynamic_array_equal(a, b):
-    assert len(a) == len(b)
-    for i in range(len(b)):
-        assert a.get(i) == b[i]
+    """
+    Purpose: Defines an assertion method for our DynamicArray object.
+    """
+    if isinstance(a, DynamicArray) and isinstance(b, list):
+        for i in range(len(a)):
+            assert a.get(i) == b[i], "Values are not equivalent"
+
+    elif isinstance(a, DynamicArray) and isinstance(b, DynamicArray):
+        assert a.capacity() == b.capacity(), "Arrays have different lengths"
+        for i in range(len(a)):
+            assert a.get(i) == b.get(i), "Values are not equivalent"
+
+    elif isinstance(a, list) and isinstance(b, DynamicArray):
+        assert len(a) == b.capacity(), "Arrays have different lengths"
+        for i in range(len(b)):
+            assert b.get(i) == a[i], "Values are not equivalent"
+
 
 
 def test_init():
+    """
+    Purpose: Tests that DynamicArray is initialized properly.
+    """
     dl = DynamicArray()
     assert_dynamic_array_equal(dl, [])
     # Example of Exception testing
-    """
+    
     with pytest.raises(IndexError):
         dl.pop()
     with pytest.raises(IndexError):
         dl.get(0)
-    """
+    
 
 def test_append():
+    """
+    Purpose: Tests that DynamicArray's append() method works correctly,
+    and resizes array as appropriate.
+    """
     dl = DynamicArray()
     dl.append(1)
     dl.append(2)
     assert_dynamic_array_equal(dl, [1, 2])
     dl.append('test')
     assert_dynamic_array_equal(dl, [1, 2, 'test'])
+
+
+def test_resize():
+    """
+    Purpose:
+    """
+    arr = DynamicArray()
+    for i in range(1,5):
+        arr.append(i)
+    
+    assert_dynamic_array_equal(arr, [1,2,3,4])
+    
+    arr.append(5)
+    assert_dynamic_array_equal(arr, [1,2,3,4,5, None, None, None])
+
+    arr.append(6)
+    arr.append(7)
+    arr.append(8)
+    assert_dynamic_array_equal(arr, [1,2,3,4,5,6,7,8,None, None, None, None, None, None, None, None])
+
+
+def test_capacity():
+    arr = DynamicArray()
+    for i in range(2):
+        arr.append(i)
+    assert arr.capacity() == 4, "Wrong capacity"
+
+    for i in range(3):
+        arr.append(i)
+    assert arr.capacity() == 8, "Wrong capacity"
+
+    for i in range(4):
+        arr.pop()
+    assert arr.capacity() == 4, "Wrong capacity"
+
+    arr.pop()
+    assert arr.capacity() == 2, "Wrong capacity"
+
+
+def test_get():
+    """
+    """
+    arr = DynamicArray()
+    for i in range(4):
+        arr.append(0)
+    assert arr.get(1) == 0, "Wrong value"
+
+    with pytest.raises(IndexError):
+        arr.get(5)
+
+def test_set():
+    arr = DynamicArray()
+    with pytest.raises(IndexError):
+        arr.set(1, 1)
+    arr.append(1)
+    arr.append(1)
+    arr.set(1, 99)
+    assert arr.get(1) == 99, "Wrong value"
+
+    arr.set(0, 0)
+    arr.set(1, 1)
+    assert_dynamic_array_equal(arr, [0, 1, None, 99]), "Wrong values"
+    arr.insert(2, 2)
+    assert_dynamic_array_equal([0, 1, 2, 99], arr), "Wrong values"
+
+    with pytest.raises(IndexError):
+        arr.set(5, 0)
+
+
+def test_insert():
+    arr = DynamicArray()
+    with pytest.raises(IndexError):
+        arr.insert(100, 0)
+    arr.insert(0, 9)
+    assert len(arr) == 1, "Wrong length"
+    assert_dynamic_array_equal(arr, [9, None, None, None])
+
+
+def test_pop():
+    arr = DynamicArray()
+    arr2 = DynamicArray()
+    for i in range(9):
+        arr.append(i)
+        arr2.append(i+1)
+    arr.pop(0)
+    arr2.pop()
+    assert_dynamic_array_equal(arr, arr2)
+    
+
+def test_reverse():
+    arr = DynamicArray()
+    for i in range(4):
+        arr.append(i*10)
+    assert_dynamic_array_equal(arr, [0,10,20,30])
+    arr.reverse()
+    assert_dynamic_array_equal(arr, [30,20,10,0]) # Tests reversal for full DynamicArray
+    arr.insert(2,2)
+    # [30,20,2,10,0]
+    arr.reverse()
+    assert_dynamic_array_equal(arr, [0,10,2,20,30, None, None, None]) # Tests reversal for non-full DynamicArray
+    for i in range(4):
+        arr.pop()
+    assert_dynamic_array_equal(arr, [0])
+
 
 # TODO: add test cases for all of your methods here.
 
@@ -155,16 +346,12 @@ def test_append():
 # covered by your tests.  Try running this now on 
 # and checking out the coverage report and listing.
 
-# Please refer to the README and handout for full guidance 
-# and remember to answer the questions for your project in 
-# report.md!
-
 if __name__ == "__main__":
-    # **Examples**
-    arr = DynamicArray()
-    print('Length:', len(arr))
-    arr.append(3)
-    arr.append(4)
-    print('The first element is:', arr.get(0))
-    print(arr)
-    # arr.set(5, 7) # No error when your DynamicArray is finished!
+    print("Running tests...\n")
+    tests = [test_init(), test_append(), test_resize(), test_capacity(), test_get(), test_set(), test_insert(), test_pop(), test_reverse()]
+    
+    # Run all test functions
+    for test in tests:
+        test
+
+    print("All tests passed!")
