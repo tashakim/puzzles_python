@@ -234,7 +234,8 @@ def test_append():
 
 def test_resize():
     """
-    Purpose:
+    Purpose: Tests that our DynamicArray doubles capacity and shrinks 
+    doubly when necessary.
     """
     arr = DynamicArray()
     for i in range(1,5):
@@ -252,6 +253,10 @@ def test_resize():
 
 
 def test_capacity():
+    """
+    Purpose: Tests the capacity method returns correct capacity of 
+    DynamicArray instance.
+    """
     arr = DynamicArray()
     for i in range(2):
         arr.append(i)
@@ -271,6 +276,8 @@ def test_capacity():
 
 def test_get():
     """
+    Purpose: Tests the get method returns correct element at input index,
+    and raises an IndexError when index is out of range.
     """
     arr = DynamicArray()
     for i in range(4):
@@ -281,6 +288,10 @@ def test_get():
         arr.get(5)
 
 def test_set():
+    """
+    Purpose: Tests the set method correctly sets the element at input index
+    with the input value, and raises an IndexError when index is out of range.
+    """
     arr = DynamicArray()
     with pytest.raises(IndexError):
         arr.set(1, 1)
@@ -300,6 +311,11 @@ def test_set():
 
 
 def test_insert():
+    """
+    Purpose: Tests the insert method correctly places input value into 
+    the input index position.
+    Also checks that an IndexError is raised when index is out of range.
+    """
     arr = DynamicArray()
     with pytest.raises(IndexError):
         arr.insert(100, 0)
@@ -309,17 +325,32 @@ def test_insert():
 
 
 def test_pop():
+    """
+    Purpose: Tests that the pop method correctly removes element from 
+    DynamicArray, and shrinks the array doubly when length of array is 
+    less than capacity/4.
+    """
     arr = DynamicArray()
     arr2 = DynamicArray()
     for i in range(9):
         arr.append(i)
         arr2.append(i+1)
+
     arr.pop(0)
     arr2.pop()
+    assert_dynamic_array_equal(arr, arr2)
+
+    for i in range(7):
+        arr.pop()
+        arr2.pop()
     assert_dynamic_array_equal(arr, arr2)
     
 
 def test_reverse():
+    """
+    Purpose: Tests the reverse function correctly reverses all items 
+    in the DynamicArray, including the case when array is not full.
+    """
     arr = DynamicArray()
     for i in range(4):
         arr.append(i*10)
