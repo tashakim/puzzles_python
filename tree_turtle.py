@@ -3,6 +3,9 @@ import turtle
 import random
 
 def tree(branchLen,t):
+    """
+    Purpose: Recursively draws random tree 
+    """
     if branchLen > 5:
         t.forward(branchLen)
         t.right(20)
@@ -12,8 +15,11 @@ def tree(branchLen,t):
         t.right(20)
         t.backward(branchLen)
 
-def draw(turtle):
-    # Purpose: Recursively draws random tree 
+
+def draw_init(turtle, color):
+    """
+    Purpose: Initializes turtle position and color
+    """
     print("Turtle initialized")
 
     turtle.left(90)
@@ -21,17 +27,19 @@ def draw(turtle):
     turtle.backward(100)
     turtle.down()
 
-    turtle.color('green')
+    turtle.color(color)
     tree(75,turtle)
+    print("Turtle finished drawing tree")
     
 
 def main():
-
     myWin = turtle.Screen()
+    color = ['red', 'yellow', 'green', 'blue']
 
     for i in range(4):
         t = turtle.Turtle()
-        draw(t)
+        draw_init(t, color[i%3])
     myWin.exitonclick()
 
-main()
+if __name__ == '__main__':
+    main()
