@@ -1,3 +1,4 @@
+import numpy as np
 import turtle
 import random
 
@@ -11,15 +12,26 @@ def tree(branchLen,t):
         t.right(20)
         t.backward(branchLen)
 
+def draw(turtle):
+    # Purpose: Recursively draws random tree 
+    print("Turtle initialized")
+
+    turtle.left(90)
+    turtle.up()
+    turtle.backward(100)
+    turtle.down()
+
+    turtle.color('green')
+    tree(75,turtle)
+    
+
 def main():
-    t = turtle.Turtle()
+
     myWin = turtle.Screen()
-    t.left(90)
-    t.up()
-    t.backward(100)
-    t.down()
-    t.color("green")
-    tree(75,t)
+
+    for i in range(4):
+        t = turtle.Turtle()
+        draw(t)
     myWin.exitonclick()
 
 main()
