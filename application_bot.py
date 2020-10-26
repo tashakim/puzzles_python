@@ -16,7 +16,6 @@ class ApplyBot:
     def openPage(self, url):
         bot = self.bot 
         bot.get(url)
-        time.sleep(1)
 
     """
     def uploadResume(self):
@@ -41,7 +40,6 @@ class ApplyBot:
         major.send_keys('Mathematics - Computer Science')
         
         print("text fields filled")
-        time.sleep(1)
 
 
     def pullDown(self):
@@ -76,8 +74,8 @@ class ApplyBot:
 
         location = bot.find_element_by_name('cards[0bb396d1-c0f6-46c8-a3c5-79444ccc65b5][field7]')
         location.send_keys(Keys.RETURN)
-        location.send_keys('U', Keys.ARROW_DOWN, Keys.RETURN)     
-        time.sleep(2)
+        location.send_keys('U')     
+        # , Keys.ARROW_DOWN, Keys.RETURN
         print("Selected location")
 
         """
@@ -87,7 +85,7 @@ class ApplyBot:
         demographic.send_keys(Keys.DOWN)
         demographic.send_keys(Keys.DOWN) 
         demographic.send_keys(Keys.RETURN)
-        """
+        
 
         consent = bot.find_element_by_name('consent[marketing]')
         actions = ActionChains(bot)
@@ -96,6 +94,7 @@ class ApplyBot:
         actions.perform()
 
         print("consented!")
+        """
 
 
 

@@ -245,3 +245,8 @@ JavaScript error: resource://gre/modules/Sqlite.jsm, line 1031: Error: Sqlite.js
 1603694289325	Marionette	INFO	Stopped listening on port 61956
 1603694291400	Marionette	INFO	Stopped listening on port 61446
 1603694293149	Marionette	INFO	Stopped listening on port 60504
+1603694329789	geckodriver	INFO	Listening on 127.0.0.1:63508
+1603694330802	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/d7/rlgg27d972z58lb5whx8kb740000gn/T/rust_mozprofileRrJLNO"
+console.error: SearchCache: "_readCacheFile: Error reading cache file:" (new Error("", "(unknown module)"))
+1603694332697	Marionette	INFO	Listening on port 63523
+1603694332741	Marionette	WARN	TLS certificate errors will be ignored for this session
