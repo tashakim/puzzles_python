@@ -53,7 +53,7 @@ class ApplyBot:
 
         work_permit = bot.find_element_by_name('cards[0bb396d1-c0f6-46c8-a3c5-79444ccc65b5][field1]')
         work_permit.send_keys(Keys.RETURN)
-        work_permit.send_keys('No')
+        work_permit.send_keys('Yes')
         work_permit.send_keys(Keys.RETURN)
 
         """
@@ -74,7 +74,7 @@ class ApplyBot:
 
         location = bot.find_element_by_name('cards[0bb396d1-c0f6-46c8-a3c5-79444ccc65b5][field7]')
         location.send_keys(Keys.RETURN)
-        location.send_keys('U')     
+        location.send_keys('U' + Keys.ARROW_DOWN + Keys.RETURN)     
         # , Keys.ARROW_DOWN, Keys.RETURN
         print("Selected location")
 
@@ -95,11 +95,14 @@ class ApplyBot:
 
         print("consented!")
         """
+        body = bot.find_element_by_tag_name("body")
+        body.send_keys(Keys.CONTROL + 't')
+        
 
 
 
 if __name__ == "__main__":
-    tasha = ApplyBot()
+    
     urls = ['https://jobs.lever.co/spotify/233d0c5d-5ec9-4284-8cf8-49c928d06994/apply',
     'https://jobs.lever.co/spotify/5ecdb89c-ac6c-4fe6-891f-b9265ac56d61/apply',
     'https://jobs.lever.co/spotify/e1545f57-eff1-413f-8eca-4c57c3c035e7/apply',
@@ -115,8 +118,19 @@ if __name__ == "__main__":
     'https://jobs.lever.co/spotify/707e2a3a-9f3d-466c-a6e5-57a44e7eec74/apply',
     'https://jobs.lever.co/spotify/fe639d54-d0e6-4ed0-8a60-cea8e9d8fba8/apply']
 
+    urls2 = ['https://jobs.lever.co/spotify/7259ed7b-3d40-4a1d-8b05-2a37ec1c5279/apply',
+    'https://jobs.lever.co/spotify/e8c972a6-7bbd-4355-8c08-2d3496c49136/apply',
+    'https://jobs.lever.co/spotify/7a91f6ae-7307-4258-88d1-4f9c531e42f2/apply',
+    'https://jobs.lever.co/spotify/857b8e17-eb32-4c78-a70e-4d79f7605004/apply',
+    'https://jobs.lever.co/spotify/6d263089-2d75-4bc4-9f43-c37828e997a8/apply',
+    'https://jobs.lever.co/spotify/233d0c5d-5ec9-4284-8cf8-49c928d06994/apply',
+    'https://jobs.lever.co/spotify/233d0c5d-5ec9-4284-8cf8-49c928d06994/apply',
+    'https://jobs.lever.co/spotify/fe639d54-d0e6-4ed0-8a60-cea8e9d8fba8/apply'
+    ]
+
             
-    for url in urls:
+    for url in urls2:
+        tasha = ApplyBot()
         tasha.openPage(url) 
         #tasha.uploadResume()
         tasha.fillText()
