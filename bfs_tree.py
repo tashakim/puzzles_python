@@ -11,3 +11,10 @@ def bfs(node):
 			visited.append(popped.right)
 
 	return order
+
+
+def dfs(node):
+	if node:
+		dfs(node.left)
+		dfs(node.right)
+		print(node)
