@@ -1,6 +1,10 @@
 import collections
 
 def firstDuplicate(a):
+    """
+    Purpose: given array a that contains no.'s in range 1 to a.length, finds
+    first duplicate no. for which second occurence has minimal index.
+    """
     # Counter(a)
     c1 = collections.Counter(a)
     # get dupes = {elm in arr that has Counter >= 2 : arr.}
