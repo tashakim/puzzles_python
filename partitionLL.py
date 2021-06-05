@@ -14,6 +14,7 @@ class Solutions:
             cur = cur.next
         return head
 
+
     def deleteDuplicateNodes(self, head: ListNode) -> ListNode:
         # Purpose: Deletes all instances of duplicate nodes, in a sorted linked list.
         cur = head
@@ -23,6 +24,7 @@ class Solutions:
             else:
                 cur = cur.next
         return head
+
 
     def deleteKthFromEnd(self, head: ListNode, k) -> ListNode:
         # Purpose: Deletes the kth node from the End of a linked list.
@@ -39,6 +41,71 @@ class Solutions:
 
         ptr2.next = ptr2.next.next # performs deletion
         return head
+
+
+    def deleteKthFromEnd2(self, head: ListNode, k) -> ListNode:
+        # Purpose: A two-pass solution to deleting kth node from the end of 
+        # a linked list.
+        length_of_list = 0
+        cur = head 
+        while cur.next:
+            cur = cur.next
+            length_of_list += 1
+        n = length_of_list - k
+
+        dummy = ListNode(-1, head)
+        cur = dummy 
+        while cur.next:
+            if n == 0:
+                cur.next = cur.next.next
+                return dummy.next
+            cur = cur.next
+            k -= 1
+        return dummy.next
+        """ No sentinel node used:
+        cur = head
+        if n == 0:
+            head = head.next
+            return head
+        while cur and cur.next:
+            n -= 1
+            if n == 0:
+                cur.next = cur.next.next
+                return head
+            cur = cur.next
+        return  head
+        """
+
+
+    def deleteCurNode(self, node: ListNode) -> ListNode:
+        # Purpose: Without having access to the head node, delete the node 
+        # that is passed in. It is guaranteed not to be a tail node.
+        node.val = node.next.val # note: since node != self.tail, length_of_list must be larger than 1.
+        node.next = node.next.next
+
+
+    def removeValFromList(self, head: ListNode, val: int) -> ListNode:
+        # Purpose: Removes all nodes that equals the value passed in.
+        dummy = ListNode(-1, head)
+        cur = dummy
+        while cur.next:
+            if cur.next.val == val:
+                cur.next = cur.next.next
+            else:
+                cur = cur.next
+        return dummy.next
+        """ Using previous pointer:
+        dummy = ListNode(-1, head)
+        prev = dummy
+        cur = head
+        while cur:
+            if cur.val == val:
+                prev.next = cur.next
+            else:
+                prev = cur
+            cur = cur.next
+        return dummy.next # head
+        """
 
 
 class Solution(object):
