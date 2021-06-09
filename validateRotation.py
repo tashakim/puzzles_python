@@ -34,3 +34,4 @@ def checkValidRotation2(arr, target):
 	for i in range(3):
 		rotate(arr)
 	return self.bool
+
