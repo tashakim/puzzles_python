@@ -1,3 +1,11 @@
+# Definition for a Node.
+class Node:
+    def __init__(self, val):
+        self.val = val
+        self.left = None
+        self.right = None
+        self.parent = None
+
 def isSubtree(a, b):
 	# Purpose: Checks if b is a subtree of b.
 	def traverse(a):
@@ -19,5 +27,5 @@ def isSubtree(a, b):
 
 	if not b: 
 		return True
-		
+
 	return traverse(a)
