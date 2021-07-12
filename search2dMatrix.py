@@ -3,7 +3,7 @@ class Solution:
         """
         Purpose: searches 2D matrix, and returns True if target is found.
 
-        Time complexity: O(n*n)
+        Time complexity: O(n*2)
         """
         for i in range(len(matrix)):
             for j in range(len(matrix)):
@@ -17,7 +17,7 @@ class Solution:
         """
         Purpose: searches 2D matrix, and returns True if target is found.
 
-        Time complexity: O(n*n)
+        Time complexity: O(n*2)
         """
         res = []
         for x in matrix:
