@@ -15,6 +15,7 @@ class Solution:
                 res.append(c)
 
         return ''.join(res)
+        
             
     def customSortString2(self, order, s):
         counter = Counter(s)
@@ -28,5 +29,16 @@ class Solution:
 
         return ''.join(res)
 
+
     def customSortString3(self, order, s):
+        def mySort(x):
+            if x in order:
+                return order.index(x)
+            else:
+                return -1
+        res = sorted(s, key = lambda x: mySort(x))
+        return res
+
+
+    def customSortString4(self, order, s):
         return ''.join(sorted(s, key = lambda x: order.index(x) if x in order else -1))
