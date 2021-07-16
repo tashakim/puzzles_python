@@ -1,3 +1,5 @@
+import heapq
+
 class Solution:
     """
     Purpose: Given sticks with positive int lengths, connect all sticks
@@ -27,10 +29,24 @@ class Solution:
             return sticks, res
         
         res = 0
-        if len(sticks) < 2:
-            return 0
-        
         while len(sticks) > 1:
             sticks, res = sort_sticks(sticks, res)
             
         return  res
+
+
+    def connectSticks2(self, sticks: List[int]):
+        """
+        Purpose: We can improve the above solution using a min-heap.
+        We will use python's built in module heapq.
+        """
+        res = 0
+        heapq.heapify(sticks)
+        
+        while len(sticks) > 1:
+            cur_cost = heapq.heappop(sticks) + heapq.heappop(sticks)
+            
+            heapq.heappush(sticks, cur_cost)
+            res += cur_cost
+            
+        return res
