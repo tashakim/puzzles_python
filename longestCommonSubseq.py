@@ -23,6 +23,7 @@ class Solution:
         of occurrences in string s.
         """
         c = Counter(s)
+        
         return len([k for k,v in c.items() if v == len(s)//len(c)]) == len(c)
 
 
@@ -36,4 +37,5 @@ class Solution:
         for word in words:
             if all([c not in word for c in brokenLetters]):
                 count += 1
+
         return count
