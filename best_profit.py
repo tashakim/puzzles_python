@@ -1,6 +1,7 @@
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        """Purpose: Returns the highest profit you can make 
+        """
+        Purpose: Returns the highest profit you can make 
         by buying and selling stock, at most once.
 
         Note: Scans graph from left to right, updating global max and min.
@@ -32,3 +33,19 @@ class Solution:
             max_profit = max(max_profit, profit) # calculates largest profit
             
         return max_profit
+
+
+    def maxProfitII(self, prices: List[int]) -> int:
+        """
+        Purpose: Returns max. profit you can achieve, when you can complete as 
+        many transactions as you like. 
+
+        Note: You cannot engage in multiple transactions simultaneously.
+        """
+        res = 0
+        
+        for i in range(1, len(prices)):
+            if prices[i] > prices[i-1]:
+                res += (prices[i] - prices[i-1])
+                
+        return res
