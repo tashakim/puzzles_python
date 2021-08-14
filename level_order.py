@@ -6,8 +6,12 @@ from collections import defaultdict
 #         self.val = val
 #         self.left = left
 #         self.right = right
+
 class Solution:
     def levelOrder(self, root: TreeNode) -> List[List[int]]:
+        """
+        Purpose: Recursively appends once entire tree is traversed in depth-first search way.
+        """
         if not root: return []
         self.order = []
         self.maxDepth = 0
@@ -28,4 +32,25 @@ class Solution:
         self.order.insert(0, [root.val])
         return self.order[:self.maxDepth + 1]
                 
-                
+    
+    def levelOrder(self, root: TreeNode) -> List[List[int]]:
+        """
+        Purpose: Iteratively appends to order in a breadth-first search way.
+        """
+        if not root: return []
+
+        order = []
+        visited = [root]
+        while visited:
+            cur_level, next_level = [], []
+            for node in visited:
+                cur_level.append(node.val)
+                if node.left:
+                    next_level.append(node.left)
+                if node.right:
+                    next_level.append(node.right)
+            
+            order.append(cur_level)
+            visited = next_level
+
+        return order
