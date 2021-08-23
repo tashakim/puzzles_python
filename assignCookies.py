@@ -1,3 +1,4 @@
+import heapq
 class Solution:
     def findContentChildren(self, g, s):
         """
@@ -23,3 +24,23 @@ class Solution:
             cookie += 1
         
         return child
+
+
+    def findContentChildren1(self, g, s):
+        """
+        Purpose: Min. heap approach.
+        """
+        heapq.heapify(s)
+        count = 0
+        g.sort()
+        for child in g:
+            # end if no cookies exist
+            if not s: return count
+            x = float('-inf')
+            while x < child and s:
+                x = heapq.heappop(s)
+
+            if x >= child:
+                count += 1
+
+        return count
